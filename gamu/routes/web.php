@@ -63,4 +63,6 @@ Route::get('/ListaEstudiantesPDF', 'Estudiantes@listadoEstudiantes');
 Route::get('/ListaProfesoresPDF', 'Profesors@listadoProfesores');
 Route::get('/ListaCursosPDF', 'Cursos@listadoCursos');
 Route::get('/ListaBecasPDF', 'Becas@listadoBecas');
-
+//Asiganaciones
+Route::get('/AsiganarBecas', 'Becas@asignar');
+Route::get('/AsiganarInstrumentos', 'Instrumentos@asignar');

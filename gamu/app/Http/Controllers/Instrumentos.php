@@ -137,4 +137,9 @@ class Instrumentos extends Controller
         
     }
 
+    public function asignar()
+    {
+      return view('instrumentos.asignarInst');
+    }
+
 }

@@ -28,7 +28,7 @@
                 <!-- Instrumentos-->
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Instrumentos<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href=""><i class="fa fa-link" aria-hidden="true"></i> Prestamo</a></li>
+                        <li><a href="../../../AsiganarInstrumentos"><i class="fa fa-link" aria-hidden="true"></i> Prestamo</a></li>
                         <li><a href="../../../instrumentos/create"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Nuevo</a></li>
                         <li><a href="../../../instrumentos"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</a></li>
                         <li><a href=""><i class="fa fa-line-chart" aria-hidden="true"></i> Reportes</a></li>
@@ -78,7 +78,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="../../../becas/create"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Nueva Categoria</a></li>
                         <li><a href="../../../becas"><i class="fa fa fa-pencil-square-o" aria-hidden="true"></i> Editar</a></li>
-                        <li><a href=""><i class="fa fa-link" aria-hidden="true"></i> Asignar Becas</a></li>
+                        <li><a href="../../../AsiganarBecas"><i class="fa fa-link" aria-hidden="true"></i> Asignar Becas</a></li>
                         <li><a href=""><i class="fa fa-line-chart" aria-hidden="true"></i> Lista de Becados </a></li>
                         <li><a href="/ListaBecasPDF"><i class="fa fa-list" aria-hidden="true"></i> Lista de Becas Registradas </a></li>
                     </ul>

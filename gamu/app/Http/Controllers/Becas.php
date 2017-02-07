@@ -138,5 +138,8 @@ class Becas extends Controller
         return view('becas.index')->with(['becas'=>$becas]);
     }
 
-    
+    public function asignar()
+    {
+      return view('becas.asignarBeca');
+    }
 }

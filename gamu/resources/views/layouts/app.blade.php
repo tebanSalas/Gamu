@@ -46,6 +46,9 @@
     <script src="/js/jquery.prettyPhoto.js"></script>
     <script src="/js/jquery.isotope.min.js"></script>
     <script src="/js/custom.js"></script>
+     
+    @section('scripts')
+    @show
 
 
 </body>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use gamu\Http\Requests;
 use gamu\Beca;
+use gamu\Estudiante;
 
 class Becas extends Controller
 {
@@ -140,6 +141,9 @@ class Becas extends Controller
 
     public function asignar()
     {
-      return view('becas.asignarBeca');
-    }
-}
+      $becas = DB::select('select * from becas WHERE becas.delete = 0');
+      $estud = DB::select('select * from estudiantes WHERE estudiantes.delete = 0');
+      return view('becas.asignarBeca')->with(['becas'=>$becas, 'estud'=>$estud]);  
+      
+    } 
+} 

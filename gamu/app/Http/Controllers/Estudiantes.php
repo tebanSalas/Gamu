@@ -165,4 +165,19 @@ class Estudiantes extends Controller
         //Estudiante::SELECT('*')-> FROM ('estudiantes')-> WHERE ('estudiantes.nombre', 'LIKE', '"%',$al,'%"')->get();
     }
 
-}
+    public function buscar($nombre)
+    {
+        
+        $con = 'select * from estudiantes WHERE estudiantes.delete = 0 && estudiantes.nombre like "%';
+        $sulta = $nombre.'%"';
+        $consulta = $con . $sulta;
+        $estudiantes = DB::select($consulta);
+
+        
+            return response()->json(
+                $estudiantes
+            );
+        
+    }
+
+} 

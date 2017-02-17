@@ -66,3 +66,5 @@ Route::get('/ListaBecasPDF', 'Becas@listadoBecas');
 //Asiganaciones
 Route::get('/AsiganarBecas', 'Becas@asignar');
 Route::get('/AsiganarInstrumentos', 'Instrumentos@asignar');
+
+Route::get('/buscaEstu/{nombre}', 'Estudiantes@buscar');

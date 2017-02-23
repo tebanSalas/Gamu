@@ -1,8 +1,8 @@
-$("#btnBuscarEstud").click(function(){
-	var drop = $("#estudiantes");
+$("#btnBuscarProfe").click(function(){
+	var drop = $("#profesores");
 	drop.html('');	
-	var nombre = $("#nombreE").val();
-	var route = "http://localhost:8000/buscaEstu/"+nombre+"";
+	var nombre = $("#nombreProfe").val();
+	var route = "http://localhost:8000/buscaProfe/"+nombre+"";
 
 	$.get(route, function(res){
 		$(res).each(function(key,value){

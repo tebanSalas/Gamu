@@ -31,7 +31,7 @@
                         <li><a href="../../../AsiganarInstrumentos"><i class="fa fa-link" aria-hidden="true"></i> Prestamo</a></li>
                         <li><a href="../../../instrumentos/create"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Nuevo</a></li>
                         <li><a href="../../../instrumentos"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</a></li>
-                        <li><a href=""><i class="fa fa-line-chart" aria-hidden="true"></i> Reportes</a></li>
+                        <li><a href="../../../seleccionReporte"><i class="fa fa-line-chart" aria-hidden="true"></i> Reportes</a></li>
                     </ul>
                 </li>
 
@@ -40,7 +40,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="../../../cursos/create"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Nuevo</a></li>
                         <li><a href="../../../cursos"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</a></li>
-                        <li><a href=""><i class="fa fa-link" aria-hidden="true"></i> Habilitar Cursos</a></li>
+                        <li><a href="../../../habilitarCursos"><i class="fa fa-link" aria-hidden="true"></i> Habilitar Cursos</a></li>
                         <li><a href="/ListaCursosPDF"><i class="fa fa-check" aria-hidden="true"></i> Cursos Registrados</a></li>
                         <li><a href=""><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Guía de Cursos y Horarios </a></li>
                     </ul>
@@ -49,7 +49,7 @@
                 <!-- Matricula-->
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Matrícula <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href=""><i class="fa fa-plus-square-o" aria-hidden="true"></i> Nueva</a></li>
+                        <li><a href="../../../matriculas"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Nueva</a></li>
                         <li><a href=""><i class="fa fa-list-ul" aria-hidden="true"></i> Talleres</a></li>
                         <li><a href=""><i class="fa fa-line-chart" aria-hidden="true"></i> Reporte</a></li>
                         <li><a href="../../../ciclos/create"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Habilitar Ciclo Lectivo</a></li>

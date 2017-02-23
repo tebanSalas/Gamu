@@ -41,7 +41,10 @@ Route::resource('/cursos', 'Cursos');
 Route::resource('/estudiantes', 'Estudiantes');
 //Profesores
 Route::resource('/profesores', 'Profesors');
-
+//HabilitarCursos
+Route::resource('/habilitarCursos', 'HabilitarCursos');
+//matriculas
+Route::resource('/matriculas', 'Matriculas');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
@@ -52,19 +55,33 @@ Route::get('/pdf', function(){
     return $pdf->stream('archivo.pdf');
 });
 
+
+
 //buscar 
 Route::get('/buscarEstud', 'Estudiantes@buscarNombre');
 Route::get('/buscarProf', 'Profesors@buscarNombre');
 Route::get('/buscarCurso', 'Cursos@buscarNombre');
 Route::get('/buscarBeca', 'Becas@buscarNombre');
 Route::get('/buscarInstrumento', 'Instrumentos@buscarNombre');
+Route::get('/estuMatricu/{nombre}', 'Matriculas@buscarEstudiante');
 //reporteslistados
 Route::get('/ListaEstudiantesPDF', 'Estudiantes@listadoEstudiantes');
 Route::get('/ListaProfesoresPDF', 'Profesors@listadoProfesores');
 Route::get('/ListaCursosPDF', 'Cursos@listadoCursos');
 Route::get('/ListaBecasPDF', 'Becas@listadoBecas');
-//Asiganaciones
-Route::get('/AsiganarBecas', 'Becas@asignar');
-Route::get('/AsiganarInstrumentos', 'Instrumentos@asignar');
+Route::get('/seleccionReporte', 'Instrumentos@reportesIntrumentos');
 
+
+//Asiganar Beca
+Route::get('/AsiganarBecas', 'Becas@asignar'); 
+Route::post('/AsignarBeca', 'Becas@asignarBeca');
 Route::get('/buscaEstu/{nombre}', 'Estudiantes@buscar');
+
+//Asiganar instrumento
+Route::get('/buscaInstrumento/{nombre}', 'Instrumentos@buscar');
+Route::get('/AsiganarInstrumentos', 'Instrumentos@asignar');
+Route::post('/Prestamo', 'Instrumentos@prestamo');
+
+//habilitar ciclo lectivo
+Route::get('/buscaCurso/{nombre}', 'HabilitarCursos@buscarCurso');
+Route::get('/buscaProfe/{nombre}', 'HabilitarCursos@buscarProfe');

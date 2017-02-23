@@ -24,8 +24,8 @@
                     <label class="control-label col-sm-2" for="ciclo">Ciclo Lectivo:</label>
                       <div class="dropdown col-sm-10">
                         <select class="btn btn-default " name="ciclo" placeholder="Seleccione un año">
-                          <option value="I">I ciclo</option>
-                          <option value="II">II ciclo</option>
+                          <option value="I Ciclo">I ciclo</option>
+                          <option value="II Ciclo">II ciclo</option>
 
                         </select>
                     </div>

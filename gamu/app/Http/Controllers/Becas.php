@@ -146,4 +146,18 @@ class Becas extends Controller
       return view('becas.asignarBeca')->with(['becas'=>$becas, 'estud'=>$estud]);  
       
     } 
+
+    public function asignarBeca(Request $request){
+        $estud = Estudiante::find($request->estudiantes);
+        $beca = Beca::find($request->becas);
+
+        $estud->id_beca = $request->becas;
+        $msj = 'Se asignó a ' . $estud->nombre . ' '. $estud->apellidos . ' la beca llamada ' . $beca->nombre . '.';
+        if($estud->update()){
+            return redirect('/home')->with('msj', $msj );
+        }else{
+            return back()->with('msj2', 'Opa!, algo pasó. Por favor revisa los datos');
+        }
+        
+    }
 } 

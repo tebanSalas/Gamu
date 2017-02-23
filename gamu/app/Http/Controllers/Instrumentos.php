@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use gamu\Http\Requests;
 use gamu\Instrumento;
+use gamu\Prestamo;
+use gamu\Estudiante;
 
 class Instrumentos extends Controller
 {
@@ -139,7 +141,46 @@ class Instrumentos extends Controller
 
     public function asignar()
     {
-      return view('instrumentos.asignarInst');
+      $estud = DB::select('select * from estudiantes WHERE estudiantes.delete = 0');  
+      $inst = DB::select('select * from instrumentos WHERE instrumentos.delete = 0 && instrumentos.disponibilidad like "Disponible"');
+        return view('instrumentos.asignarInst')->with(['inst'=>$inst , 'estud'=>$estud]);  
+      
     }
 
+    public function buscar($nombre)
+    {
+        
+        $con = 'select * from instrumentos WHERE instrumentos.delete = 0 && instrumentos.disponibilidad like "Disponible" && instrumentos.nombre like "%';
+        $sulta = $nombre.'%"';
+        $consulta = $con . $sulta;
+        $instrumentos = DB::select($consulta);
+
+        
+            return response()->json(
+                $instrumentos
+            );
+        
+    }
+
+    public function prestamo(Request $request){
+        $estud = Estudiante::find($request->estudiantes);
+        $instru = Instrumento::find($request->instrumentos);
+
+        $prestamo = new Prestamo();
+        $prestamo->id_estudiante = $estud->id;
+        $prestamo->id_instrumento =$instru->id;
+
+        $mj = 'Se asignó a ' . $estud->nombre . ' '. $estud->apellidos . ' el instrumento ' . $instru->nombre . '.';
+
+        if($prestamo->save()){
+            return redirect('/home')->with('msj', $mj );
+        }else{
+            return back()->with('msj2', 'Opa!, algo pasó. Por favor revisa los datos');
+        }
+        
+    }
+
+    public function reportesIntrumentos(){
+        return view('instrumentos.seleccionReporte');
+    }
 }

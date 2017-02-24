@@ -160,6 +160,7 @@ class Estudiantes extends Controller
         $estudiantes = DB::select($consulta);
         return view('estudiantes.index')->with(['estud'=>$estudiantes]);
 
+
         // esto hay que mejorarlo para que no quede hecho a la fuerza, lo que hice es concatenar el parametro que viene con el resto de la consulta, porque no me queria funcionar... entonces meto todoa la consulta en una sola variable y la mando a ejecutar para que traiga lo que se le pide   
         //DB::select('select * from estudiantes WHERE estudiantes.id = 1', [$al]);
         //Estudiante::SELECT('*')-> FROM ('estudiantes')-> WHERE ('estudiantes.nombre', 'LIKE', '"%',$al,'%"')->get();
@@ -172,8 +173,7 @@ class Estudiantes extends Controller
         $sulta = $nombre.'%"';
         $consulta = $con . $sulta;
         $estudiantes = DB::select($consulta);
-
-        
+        dd($estudiantes);
             return response()->json(
                 $estudiantes
             );

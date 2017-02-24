@@ -27,7 +27,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <table  class="table table-striped">
-		 		@if(isset($estud))
+		 		
 			 		<thead>
 			 			<th>Nombre</th>
 			 			<th>Cédula</th>
@@ -36,18 +36,9 @@
 			 			<th>Matricular</th>
 			 		</thead>
 			 		<tbody id="listaEstudiantes">
-			 			@foreach($estud as $estu)
-				 			<tr>
-				 				<td>{{ $estu->nombre }} {{ $estu->apellidos }}</td>
-				 				<td>{{ $estu->cedula }}</td>
-				 				<td>{{ $estu->telefono }}</td>
-				 				<td>{{ $estu->nombre_padre1 }} {{ $estu->tel_padre1 }}</td>
-				 				<td><button type="button" class="btn btn-theme" data-toggle="modal" data-target="#recibo">Matricular</button></td>	
-				 			</tr>
-				 			
-				 		@endforeach
+			 			
 			 		</tbody>
-		 		@endif
+		 		
  			</table>
  			
         </div>
@@ -64,8 +55,9 @@
                 <h4 class="modal-title">Ingrese el número del comprobante de pago:</h4>
               </div>
              <div class="modal-body">
-             	<form class="form-horizontal" role="form" method="GET" action="{{ url('/matriculas/create') }}">
+             	<form class="form-horizontal" role="form" method="POST" action="{{ url('/matriculas') }}">
              	  {{ csrf_field() }}
+             	  <input type="hidden" name="idEstud" id="idEstud">
                   <input type="text" class="form-control" name="comprobante" id="comprobante" placeholder="Número de recibo">
               </div>
               <div class="modal-footer">

@@ -19,6 +19,7 @@ class Matriculas extends Controller
     {
         $estud = DB::select('select * from estudiantes WHERE estudiantes.delete = 0');
         return view('matricula.index')->with(['estud'=>$estud]);
+        //return view('matricula.index');
     }
     
     public function buscarEstudiante($nombre)
@@ -28,8 +29,6 @@ class Matriculas extends Controller
         $sulta = $nombre.'%"';
         $consulta = $con . $sulta;
         $estudiantes = DB::select($consulta);
-
-        
             return response()->json(
                 $estudiantes
             );
@@ -40,16 +39,12 @@ class Matriculas extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $recibo = $request->comprobante;
-        $query =  DB::select("select * from matriculas,facturas where (matriculas.recibo_banco='$recibo' or facturas.recibo_banco='$recibo' )");
-        if(empty($query)){
-            return back()->with('msj', 'Exitoso');
-        }
-        else{
-            return back()->with('msj2', 'Opa!, Este recibo ya ha sido registrado en el sistema');
-        }
+        $estudiantes = DB::select('select * from estudiantes WHERE estudiantes.delete = 0');
+            return response()->json(
+                $estudiantes
+            );
     }
 
     /**
@@ -60,7 +55,19 @@ class Matriculas extends Controller
      */
     public function store(Request $request)
     {
-        
+        $id = $request->idEstud;
+        $recibo = $request->comprobante;
+        $estud = Estudiante::find($id);
+
+        $id_ciclo = DB::select("select id from ciclos WHERE ciclos.habilitado = 1");
+        $cursos = DB::select("select * from cur_profs where cur_profs.id_ciclo='$id_ciclo'");
+        $query =  DB::select("select * from matriculas,facturas where (matriculas.recibo_banco='$recibo' or facturas.recibo_banco='$recibo' )");
+        if(empty($query)){
+            return back()->with('msj', 'Exitoso');
+        }
+        else{
+            return back()->with('msj2', 'Opa!, Este recibo ya ha sido registrado en el sistema');
+        }
     }
 
     /**
@@ -71,7 +78,7 @@ class Matriculas extends Controller
      */
     public function show($id)
     {
-        
+       
     }
 
     /**
@@ -82,7 +89,8 @@ class Matriculas extends Controller
      */
     public function edit($id)
     {
-        //
+        
+
     }
 
     /**

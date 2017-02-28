@@ -18,7 +18,7 @@ $("#btnBuscar").click(function(){
 
 	$.get(route, function(res){
 		$(res).each(function(key,value){
-			table.append("<tr><td>"+value.nombre+" "+value.apellidos+"</td><td>"+value.cedula+"</td><td>"+value.telefono+"</td><td>"+value.nombre_padre1+" "+value.tel_padre1+"</td><td><button type='button' value="+value.id+" class='btn btn-theme' data-toggle='modal' data-target='#recibo'>Matricular</button></td></tr>");
+			table.append("<tr><td>"+value.nombre+" "+value.apellidos+"</td><td>"+value.cedula+"</td><td>"+value.telefono+"</td><td>"+value.nombre_padre1+" "+value.tel_padre1+"</td><td><button type='button' value="+value.id+" onclick='Mostrar(this);' class='btn btn-theme' data-toggle='modal' data-target='#recibo'>Matricular</button></td></tr>");
 		});
 	});
 });

@@ -7,9 +7,16 @@ use Illuminate\Support\Facades\DB;
 use gamu\Http\Requests;
 use gamu\Estudiante;
 use gamu\matricula;
+use gamu\Ciclo;
+use gamu\Curso;
+use gamu\Profesor;
 
 class Matriculas extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -55,20 +62,52 @@ class Matriculas extends Controller
      */
     public function store(Request $request)
     {
-        $id = $request->idEstud;
-        $recibo = $request->comprobante;
-        $estud = Estudiante::find($id);
 
-        $id_ciclo = DB::select("select id from ciclos WHERE ciclos.habilitado = 1");
-        $cursos = DB::select("select * from cur_profs where cur_profs.id_ciclo='$id_ciclo'");
-        $query =  DB::select("select * from matriculas,facturas where (matriculas.recibo_banco='$recibo' or facturas.recibo_banco='$recibo' )");
+        //información, y validación delrecibo
+        $recibo = $request->comprobante; //numero de recibo
+        $query =  DB::select("select * from matriculas,facturas where (matriculas.recibo_banco='$recibo' or facturas.recibo_banco='$recibo' )"); //consulta que me dicesi el recibo existe
+        //validación
         if(empty($query)){
-            return back()->with('msj', 'Exitoso');
+            //si el recibo eciste traigo los datos que ocupo 
+            //información del estudiante
+                $id = $request->idEstud; 
+                $estud = Estudiante::find($id);
+            //Obtención del ciclo 
+                $idciclo = DB::select("select id from ciclos WHERE ciclos.habilitado = 1");
+                $id_ciclo = 0;
+                foreach ($idciclo as $cic) {
+                    $id_ciclo = $cic->id;
+                }
+                $ciclo = Ciclo::find($id_ciclo);
+
+            //obtengo los id de cursos y los profes y del ciclo lectivo activo
+                $curProfs = DB::select("select * from cur_profs where cur_profs.id_ciclo ='$id_ciclo'");
+                //todos los cursos
+                $cursos = DB::select('select * from cursos WHERE cursos.delete = 0');
+        //todos los profesores     
+                $profes = DB::select('select * from profesors WHERE profesors.delete = 0');
+            
+           return view('matricula.matricular')->with(['estudiantes'=>$estud,
+                                                        'ciclo'=>$ciclo,
+                                                        'curProfs'=>$curProfs]);
         }
         else{
             return back()->with('msj2', 'Opa!, Este recibo ya ha sido registrado en el sistema');
-        }
+        }        
     }
+
+    public function cursosProfes($idCurso)
+    {
+        //todos los cursos
+                $cursos = DB::select('select * from cursos WHERE cursos.delete = 0');
+        //todos los profesores     
+                $profes = DB::select('select * from profesors WHERE profesors.delete = 0');
+
+        return response()->json(
+            $cursos, $profes
+        );        
+    }
+
 
     /**
      * Display the specified resource.

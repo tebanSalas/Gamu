@@ -61,7 +61,7 @@
                   <input type="text" class="form-control" name="comprobante" id="comprobante" placeholder="Número de recibo">
               </div>
               <div class="modal-footer">
-                <input type="submit" name="btnValidarRecibo" id="btnValidarRecibo" value="Buscar" class="btn btn-success"  >
+                <input type="submit" name="btnValidarRecibo" id="btnValidarRecibo" value="Continuar" class="btn btn-success"  >
 
                 </form>
 

@@ -85,3 +85,7 @@ Route::post('/Prestamo', 'Instrumentos@prestamo');
 //habilitar ciclo lectivo
 Route::get('/buscaCurso/{nombre}', 'HabilitarCursos@buscarCurso');
 Route::get('/buscaProfe/{nombre}', 'HabilitarCursos@buscarProfe');
+
+//matricula
+Route::POST('/validaRecibo', 'Matriculas@validarRecibo');
+Route::GET('/getHorario/{id_curProf}', 'Matriculas@getHorario');

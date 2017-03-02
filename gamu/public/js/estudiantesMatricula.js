@@ -27,4 +27,4 @@ $("#btnBuscar").click(function(){
 
 function Mostrar(btn){
 	$("#idEstud").val(btn.value);
-}
+} 

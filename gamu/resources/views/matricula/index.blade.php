@@ -55,7 +55,7 @@
                 <h4 class="modal-title">Ingrese el número del comprobante de pago:</h4>
               </div>
              <div class="modal-body">
-             	<form class="form-horizontal" role="form" method="POST" action="{{ url('/matriculas') }}">
+             	<form class="form-horizontal" role="form" method="POST" action="{{ url('/validaRecibo') }}">
              	  {{ csrf_field() }}
              	  <input type="hidden" name="idEstud" id="idEstud">
                   <input type="text" class="form-control" name="comprobante" id="comprobante" placeholder="Número de recibo">

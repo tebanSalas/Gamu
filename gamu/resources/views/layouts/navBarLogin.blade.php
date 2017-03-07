@@ -8,7 +8,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" >
-                    GAMU - Escuela Comunal de Música de Orosi
+                    GAMU - Sistema de Escuelas de Música de Paraíso
                 </a>
             </div>
         </div>    

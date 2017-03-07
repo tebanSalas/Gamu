@@ -93,7 +93,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="email">Correo Electrónico:</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="email" placeholder="Ingrese la dirección de correo electrónico" value="{{ $estud->email }}" required>
+                      <input type="email" class="form-control" name="email" placeholder="Ingrese la dirección de correo electrónico" value="{{ $estud->email }}" required>
             <!-- validación detelefonoa -->       
                        @if ($errors->has('email'))
                         <span class="help-block">
@@ -173,7 +173,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="email_emergencia">Correo Electrónico:</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="email_emergencia" placeholder="Ingrese la dirección de correo electrónico" value="{{ $estud->email_emergencia }}" required>
+                      <input type="email" class="form-control" name="email_emergencia" placeholder="Ingrese la dirección de correo electrónico" value="{{ $estud->email_emergencia }}" required>
             <!-- validación detelefonoa -->       
                        @if ($errors->has('email_emergencia'))
                         <span class="help-block">
@@ -202,7 +202,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="tel_padre2">Teléfono:</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="tel_padre2" placeholder="Ingrese un número telefonico donde se pueda localizar" value="{{ $estud->tel_padre2 }}" required>
+                      <input type="text" class="form-control" name="tel_padre2" placeholder="Ingrese un número telefonico donde se pueda localizar" value="{{ $estud->tel_padre2 }}" >
             
                     </div>
                   </div>
@@ -211,7 +211,7 @@
                   <div class="form-group"> 
                     <div class="col-sm-offset-2 col-sm-10">
                       <button type="submit" class="btn btn-theme">Actualizar</button>
-                      <button align="rigth" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Eliminar</button>
+                      <button align="rigth" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Inactivar</button>
                     </div>
                   </div>
 
@@ -225,13 +225,13 @@
                           <div class="modal-content">
                             
                             <div class="modal-body">
-                              <h4>Está seguro que desea eliminar la información de: {{ $estud->nombre}} {{ $estud->apellidos }} ?</h4>
+                              <h4>Está seguro que desea inactivar al estudiante: {{ $estud->nombre}} {{ $estud->apellidos }} ?</h4>
                             </div>
                             <div class="modal-footer">
                               <form method="POST" action="{{ route('estudiantes.destroy',$estud->id) }}">
                                 <input type="hidden" name="_method" value="DELETE">
                                   {{ csrf_field() }}
-                                <input type="submit" class="btn btn-danger" value="Eliminar">
+                                <input type="submit" class="btn btn-danger" value="Inactivar">
                                 <button type="button" class="btn btn-success" data-dismiss="modal">Vover</button>
                               </form>
                             </div>

@@ -173,11 +173,10 @@ class Estudiantes extends Controller
         $sulta = $nombre.'%"';
         $consulta = $con . $sulta;
         $estudiantes = DB::select($consulta);
-        dd($estudiantes);
             return response()->json(
                 $estudiantes
             );
         
     }
-
+ 
 } 

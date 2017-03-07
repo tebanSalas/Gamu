@@ -45,7 +45,6 @@ class Cursos extends Controller
         $curso = new Curso();         
         $curso->nombre = $request->nombre;
         $curso->sigla = $request->sigla;
-        $curso->cupo = $request->cupo;
         $curso->tipo = $request->tipo;
         $curso->delete = 0; //el cero significa que esta visible
         

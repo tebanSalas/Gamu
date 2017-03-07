@@ -50,7 +50,7 @@
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Matrícula <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="../../../matriculas"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Nueva</a></li>
-                        <li><a href=""><i class="fa fa-list-ul" aria-hidden="true"></i> Talleres</a></li>
+                        <li><a href="../../../talleres"><i class="fa fa-list-ul" aria-hidden="true"></i> Talleres</a></li>
                         <li><a href=""><i class="fa fa-line-chart" aria-hidden="true"></i> Reporte</a></li>
                         <li><a href="../../../ciclos/create"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Habilitar Ciclo Lectivo</a></li>
                     </ul>
@@ -59,7 +59,7 @@
                 <!-- Academico-->
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Académico<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href=""><i class="fa fa-list-alt" aria-hidden="true"></i> Registrar Notas</a></li>
+                        <li><a href="../../../buscaRegistar"><i class="fa fa-list-alt" aria-hidden="true"></i> Registrar Notas</a></li>
                         <li><a href=""><i class="fa fa-book" aria-hidden="true"></i> Expediente Académico</a></li>
                     </ul>
                 </li>

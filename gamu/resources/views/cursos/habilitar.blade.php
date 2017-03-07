@@ -23,55 +23,76 @@
                   
                     {{ csrf_field() }}
 <!-- Curso -->
-					<div class="form-group">
-                      <div class="col-md-2" >
+					          <div class="form-group">
+                      <div class="col-xs-2" >
                         <label  class="control-label col-sm-2" >Cursos</label>
                       </div>
-                      <div class="col-md-8" >
-                        <select id="cursos" class="btn btn-default col-md-12" name="cursos" >
+                      <div class="col-xs-8" >
+                        <select id="cursos" class="btn btn-default col-xs-12" name="cursos" >
                         @foreach ($curso as $cur)
                           <option value="{{ $cur->id }}" >{{ $cur->nombre }} - {{ $cur->sigla }}</option> 
                         @endforeach
                         </select>
                       </div>
-                      <div class="col-md-2" >
-                        <button type="button" class="btn btn-warning col-md-10" data-toggle="modal" data-target="#modalCurso">Buscar</button>
+                      <div class="col-xs-2" >
+                        <button type="button" class="btn btn-warning col-xs-10" data-toggle="modal" data-target="#modalCurso">Buscar</button>
                       </div>
-                      </div>
+                    </div>
 
 <!-- profesores -->
-					<div class="form-group">
-                      <div class="col-md-2" >
+					         <div class="form-group">
+                      <div class="col-xs-2" >
                         <label  class="control-label col-sm-2" >Profesores:</label>
                       </div>
-                      <div class="col-md-8" >
-                        <select id="profesores" class="btn btn-default col-md-12" name="profesores" >
+                      <div class="col-xs-8" >
+                        <select id="profesores" class="btn btn-default col-xs-12" name="profesores" >
                         @foreach ($profes as $prof)
                           <option value="{{ $prof->id }}" >{{ $prof->nombre }} {{ $prof->apellidos }}</option> 
                         @endforeach
                         </select>
                       </div>
-                      <div class="col-md-2" >
-                        <button type="button" class="btn btn-warning col-md-10" data-toggle="modal" data-target="#modalProfe">Buscar</button>
+                      <div class="col-xs-2" >
+                        <button type="button" class="btn btn-warning col-xs-10" data-toggle="modal" data-target="#modalProfe">Buscar</button>
                       </div>
                     </div>
  <!-- Horario -->
 					<div class="form-group">
-                      <div class="col-md-2" >
-                        <label  class="control-label col-sm-2" >Horario</label>
+                      <div class="col-xs-2" >
+                        <label  class="control-label col-xs-2" >Horario</label>
                       </div>
-                      <div class="col-md-8" >
-                        <textarea type="text" id="horario" name="horario" class="form-control"></textarea>   
-                   
+                      <div class="col-xs-8" >
+                        <textarea type="text" id="horario" name="horario" class="form-control" required></textarea>   
+                        <!-- validación de nombre -->         
+                    @if ($errors->has('cupo'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('cupo') }}</strong>
+                        </span>
+                    @endif
                       </div>
                     </div>
+
+<!-- Cupo -->        
+              <div class="form-group">
+                 <div class="col-xs-2" >
+                    <label class="control-label col-xs-2" >Cupo:</label>
+                  </div>
+                  <div class="col-xs-8"> 
+                    <input type="number" min="1" max="100" class="form-control col-xs-8 " name="cupo" placeholder="Indique la cantidad de estudiantes que pueden matricular este curso" required>
+          <!-- validación de nombre -->         
+                    @if ($errors->has('cupo'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('cupo') }}</strong>
+                        </span>
+                    @endif
+                </div>
+              </div>
                     
  <!-- ciclo lectivo -->
 					<div class="form-group">
-                      <div class="col-md-2" >
-                        <label  class="control-label col-sm-2" >Ciclo</label>
+                      <div class="col-xs-2" >
+                        <label  class="control-label col-xs-2" >Ciclo</label>
                       </div>
-                      <div class="col-md-8" >
+                      <div class="col-xs-8" >
                       @foreach ($ciclo as $cic)
                         <input type="hidden" id="ciclo" name="ciclo" value="{{ $cic->id }}">
                         <input type="text" class="form-control" value="{{ $cic->ciclo }} {{ $cic->year }}" readonly>
@@ -82,7 +103,7 @@
 
  <!-- Boton -->
                      <div class="form-group"> 
-                        <div class="col-md-offset-10 col-md-2">
+                        <div class="col-xs-offset-10 col-xs-2">
                            <button type="submit" class="btn btn-theme">Asignar</button>
                         </div>
                       </div>                      

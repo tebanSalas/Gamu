@@ -89,3 +89,12 @@ Route::get('/buscaProfe/{nombre}', 'HabilitarCursos@buscarProfe');
 //matricula
 Route::POST('/validaRecibo', 'Matriculas@validarRecibo');
 Route::GET('/getHorario/{id_curProf}', 'Matriculas@getHorario');
+Route::GET('/talleres', 'Matriculas@talleres');
+
+//Expediente academico
+//Registro de notas
+Route::GET('/buscaRegistar', 'Matriculas@buscaRegistar');
+Route::get('/registarNotas/{idEstud}', 'Matriculas@registarNotas');
+Route::POST('/asignarNota', 'Matriculas@asignarNota');
+
+

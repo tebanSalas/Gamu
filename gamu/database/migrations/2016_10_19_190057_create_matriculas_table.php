@@ -25,8 +25,11 @@ class CreateMatriculasTable extends Migration
             $table->integer('id_curProf')->unsigned();
             $table->foreign('id_curProf')->references('id')->on('cur_Profs');
 
-            $table->string('recibo_banco', 60);
+            $table->integer('recibo_banco')->unsigned();
+            $table->foreign('recibo_banco')->references('id')->on('facturas');
+
             $table->integer('nota');
+            
             $table->timestamps();
         });
     }

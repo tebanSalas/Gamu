@@ -14,7 +14,7 @@ class Curso extends Model
      * @var array
      */
     protected $fillable = [
-        'nombre', 'sigla', 'cupo', 'tipo','delete'
+        'nombre', 'sigla', 'tipo','delete'
     ];
 }
 

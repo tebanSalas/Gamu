@@ -91,9 +91,11 @@
                     <label class="control-label col-sm-2" for="estado">Estado:</label>
                       <div class="dropdown col-sm-10">
                         <select class="btn btn-default" name="estado">
-                        <option value="Excelente">Excelente</option>
-                        <option value="Dañado">Dañado</option>
-                      </select>   
+                          <option value="Excelente">Excelente</option>
+                          <option value="Bueno">Bueno</option>
+                          <option value="Regular">Regular</option>
+                          <option value="Malo">Malo</option>
+                        </select>   
                       </div>
                   </div>
 

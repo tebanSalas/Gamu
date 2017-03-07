@@ -26,6 +26,7 @@ class CreateCurProfsTable extends Migration
             $table->foreign('id_ciclo')->references('id')->on('ciclos');
 
             $table->string('horario', 750);
+             $table->integer('cupo');
             
             $table->timestamps();
         });

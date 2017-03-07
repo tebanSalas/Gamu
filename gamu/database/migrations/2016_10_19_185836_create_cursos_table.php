@@ -17,7 +17,6 @@ class CreateCursosTable extends Migration
             $table->increments('id');
             $table->string('nombre', 60);
             $table->string('sigla', 60);
-            $table->integer('cupo');
             $table->string('tipo', 60);
             //borrado logico
             $table->boolean('delete');

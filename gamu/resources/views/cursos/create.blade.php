@@ -1,6 +1,6 @@
 @extends('layouts.navBarApp') 
 
- @section('content')
+ @section('content') 
 
 <!-- mensajes de sucess y error-->
 @if(session()->has('msj'))
@@ -45,21 +45,6 @@
                       @endif
                     </div>
                   </div>
-
-<!-- Cupo -->        
-              <div class="form-group">
-                <label class="control-label col-sm-2" for="cupo">Cupo:</label>
-                  <div class="col-sm-10"> 
-                    <input type="number" min="1" max="100" class="form-control" name="cupo" placeholder="Indique la cantidad de cupos para este curso" required>
-          <!-- validación de nombre -->         
-                    @if ($errors->has('cupo'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('cupo') }}</strong>
-                        </span>
-                    @endif
-                </div>
-              </div>
-
 
 <!-- tipo -->         
                   <div class="form-group">

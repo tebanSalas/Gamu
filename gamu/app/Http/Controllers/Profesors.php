@@ -51,7 +51,7 @@ class Profesors extends Controller
         $profe->telefono = $request->telefono;
         $profe->email = $request->email;
         $profe->especialidad = $request->especialidad;
-        $profe->sueldo = $request->sueldo;
+        $profe->sueldo = 0;
         $profe->delete = 0; //el cero significa que esta visible
         
         if($profe->save()){

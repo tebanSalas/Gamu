@@ -14,12 +14,12 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-info">
-                <div class="panel-heading">Seleccione el estudiante, seguidamente la beca que le asiganará al mismo</div>
+                <div class="panel-heading">Seleccione el estudiante para registrar el pago</div>
                 <div class="panel-body">
                   <form class="form-horizontal" role="form" method="POST" action="{{ url('../AsignarBeca') }}">
                   
                     {{ csrf_field() }}
-<!-- cursos -->
+<!-- Estudiante -->
                     <div class="form-group">
                       <div class="col-md-2" >
                         <label  class="control-label col-sm-2" >Estudiante</label>
@@ -27,7 +27,7 @@
                       <div class="col-md-8" >
                         <select id="estudiantes" class="btn btn-default col-md-12" name="estudiantes" >
                         @foreach ($estud as $est)
-                          <option value="{{ $est->id }}" >{{ $est->nombre }} {{ $est->apellidos }}</option> 
+                          <option value="{{ $est->id }}" >{{ $est->nombre }} {{ $est->apellidos }}</option>
                         @endforeach
                         </select>
                       </div>
@@ -35,22 +35,6 @@
                         <button type="button" class="btn btn-warning col-md-10" data-toggle="modal" data-target="#estud">Buscar</button>
                       </div>
                       </div>
-
-<!-- Beca -->
-                    <div class="form-group">
-                      <div class="col-md-2" >
-                        <label class="control-label col-sm-2" for="nombre">Beca</label>
-                      </div>
-
-                      <div class="col-md-8" >
-                       <select id="becas" class="btn btn-default col-md-12" name="becas" 
-                        @foreach ($becas as $bec)
-                          <option value="{{ $bec->id }}"> {{ $bec->nombre }}</option> 
-                        @endforeach
-                        </select>
-                      </div>
-                      
-                    </div>
 
 <!-- Boton -->
                       <div class="form-group"> 

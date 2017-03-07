@@ -13,6 +13,6 @@ class CurProf extends Model
      * @var array
      */
     protected $fillable = [
-        'id_curso', 'id_prof', 'horario', 'id_ciclo'
+        'id_curso', 'id_prof', 'horario', 'id_ciclo', 'cupo'
     ];
 }

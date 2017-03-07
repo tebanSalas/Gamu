@@ -91,7 +91,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="email">Correo Electrónico:</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="email" placeholder="Ingrese la dirección de correo electrónico" required>
+                      <input type="email" class="form-control" name="email" placeholder="Ingrese la dirección de correo electrónico" required>
             <!-- validación detelefonoa -->       
                        @if ($errors->has('email'))
                         <span class="help-block">
@@ -114,19 +114,7 @@
                       @endif
                     </div>
                   </div>
-<!-- sueldo -->               
-                  <div class="form-group">
-                    <label class="control-label col-sm-2" for="sueldo">Sueldo:</label>
-                    <div class="col-sm-10">
-                      <input type="number" class="form-control" name="sueldo" min="1" max="10000000" placeholder="¿de cuanto hablamos?" required>
-            <!-- validación detelefonoa -->       
-                       @if ($errors->has('sueldo'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('sueldo') }}</strong>
-                        </span>
-                      @endif
-                    </div>
-                  </div>
+
 
 <!-- boton -->
                   <div class="form-group"> 

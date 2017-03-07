@@ -37,7 +37,7 @@
                         @endforeach
                 	</select>
                     <div class="col-xs-6" >
-                      <textarea id="horarioI" type="text" class="form-control col-xs-5" placeholder="Seleccione un curso para ver su horario"></textarea>
+                      <textarea id="horarioI" type="text" class="form-control " placeholder="Seleccione un curso para ver su horario"></textarea>
                     </div>
                     <input type="submit" id="btnInstru" class="btn btn-success col-xs-2" value="Matricular">
                 </div>
@@ -90,7 +90,7 @@
                 	<div class="col-xs-6" >
                       <textarea id="horarioTA" type="text" class="form-control col-xs-5" placeholder="Seleccione un curso para ver su horario"></textarea>
                     </div>
-                    <input type="submit" name="btntaller" class="btn btn-success col-xs-2" value="Matricular">
+                    <input type="submit" id="btntaller" class="btn btn-success col-xs-2" value="Matricular">
                 </div>
             </div>
         </div>
@@ -104,12 +104,6 @@
     </div>
 </div>
 
-
-<script>
-$(document).ready(function(){
-    $('[data-toggle="popover"]').popover();
-});
-</script> 
 
 
 @endsection

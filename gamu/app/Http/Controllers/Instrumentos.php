@@ -166,17 +166,29 @@ class Instrumentos extends Controller
         $estud = Estudiante::find($request->estudiantes);
         $instru = Instrumento::find($request->instrumentos);
 
-        $prestamo = new Prestamo();
-        $prestamo->id_estudiante = $estud->id;
-        $prestamo->id_instrumento =$instru->id;
+        DB::beginTransaction();
 
-        $mj = 'Se asignó a ' . $estud->nombre . ' '. $estud->apellidos . ' el instrumento ' . $instru->nombre . '.';
+        $instru->disponibilidad = "Ocupado";
+        if($instru->update()){
+            $prestamo = new Prestamo();
+            $prestamo->id_estudiante = $estud->id;
+            $prestamo->id_instrumento =$instru->id;
 
-        if($prestamo->save()){
-            return redirect('/home')->with('msj', $mj );
+            $mj = 'Se asignó a ' . $estud->nombre . ' '. $estud->apellidos . ' el instrumento ' . $instru->nombre . '.';
+
+            if($prestamo->save()){
+                DB::commit();
+                return redirect('/home')->with('msj', $mj );
+            }else{
+                DB::rollback();
+                return back()->with('msj2', 'Opa!, No se puede concluir el prestamo, por favor intente más tarde');
+            }
         }else{
-            return back()->with('msj2', 'Opa!, algo pasó. Por favor revisa los datos');
+            DB::rollback();
+            return back()->with('msj2', 'Opa!, Estamos presentando dificultades para poner el instrumento como ocupado.');
         }
+
+        
         
     }
 

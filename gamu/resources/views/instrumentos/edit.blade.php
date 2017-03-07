@@ -98,12 +98,27 @@
                     <label class="control-label col-sm-2" for="estado">Estado:</label>
                       <div class="dropdown col-sm-10">
                       <select class="btn btn-default" name="estado" >
-                         @if($instrumento->estado === 'Excelente')
+                        @if($instrumento->estado === 'Excelente')
+                          <option value="Excelente" selected>Excelente</option>
+                          <option value="Bueno">Bueno</option>
+                          <option value="Regular">Regular</option>
+                          <option value="Malo">Malo</option>                          
+                        @elseif ($instrumento->estado === 'Bueno')
                           <option value="Excelente">Excelente</option>
-                          <option value="Dañado">Dañado</option>                          
-                        @else
-                          <option value="Dañado">Dañado</option>
-                          <option value="Excelente">Excelente</option> 
+                          <option value="Bueno" selected>Bueno</option>
+                          <option value="Regular">Regular</option>
+                          <option value="Malo">Malo</option>
+                        @elseif ($instrumento->estado === 'Regular')
+                          <option value="Excelente">Excelente</option>
+                          <option value="Bueno" >Bueno</option>
+                          <option value="Regular" selected>Regular</option>
+                          <option value="Malo">Malo</option>
+                        @elseif ($instrumento->estado === 'Malo')
+                          <option value="Excelente">Excelente</option>
+                          <option value="Bueno" >Bueno</option>
+                          <option value="Regular">Regular</option>
+                          <option value="Malo" selected>Malo</option>
+
                         @endif
 
                         

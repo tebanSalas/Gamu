@@ -1,3 +1,7 @@
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover(); 
+});
+
 //llena el cuadro de horario de instrumentos
 $("#M_instrumento").change(function(){
 	var id_curProf = $("#M_instrumento").val();

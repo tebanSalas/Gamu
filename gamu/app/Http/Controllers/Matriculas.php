@@ -11,6 +11,7 @@ use gamu\Ciclo;
 use gamu\Curso;
 use gamu\Profesor;
 use gamu\CurProf;
+use gamu\Factura;
 
 class Matriculas extends Controller
 {
@@ -25,8 +26,7 @@ class Matriculas extends Controller
      */
     public function index()
     {
-        $estud = DB::select('select * from estudiantes WHERE estudiantes.delete = 0');
-        return view('matricula.index')->with(['estud'=>$estud]);
+        return view('matricula.index');
     }
     
     public function buscarEstudiante($nombre)
@@ -65,23 +65,49 @@ class Matriculas extends Controller
         if($request->ajax()){
             $id_estu = $request->estudiante;
             $curProf = $request->curProf;
+            $factura = $request->factura;
             $query = DB::select("select * from matriculas WHERE (matriculas.id_estudiante=$id_estu and matriculas.id_curProf=$curProf)");
             
             if(empty($query)){
+
+            DB::beginTransaction();
+
+                $mismoRecibo = DB::select("select * from facturas WHERE facturas.recibo_banco = $factura");
+                $idFactura =0;
+                if(empty($mismoRecibo)){
+                    $recibo = new Factura();
+                    $recibo->id_estudiante = $id_estu;
+                    $recibo->fecha_pago = date("Y-m-d");
+                    $recibo->recibo_banco = $request->factura;
+                    $recibo->mes_cobro = 'matricula';
+                    if($recibo->save()==false){
+                        DB::rollback();
+                    }
+                }//empty mismo recibo
+
+                $queryFactura = DB::select("select id from facturas WHERE facturas.recibo_banco =$factura");
+                foreach ($queryFactura as $fac) {
+                    $idFactura = $fac->id;
+                }
                 $matri = new matricula();
                 $matri->id_estudiante = $request->estudiante;
                 $matri->id_ciclo = $request->ciclo;
                 $matri->id_curProf = $request->curProf;
-                $matri->recibo_banco = $request->factura;
                 $matri->nota = 0;
+                $matri->recibo_banco = $idFactura;
+                
                 if($matri->save()){
-                return response()->json([
-                    "mjs"=> "Matriculado"
-                    ]); 
-                }
-            }
-        }               
-    }
+                    DB::commit();
+                    return response()->json([
+                        "mjs"=> "Matriculado"
+                    ]);
+                }else{
+                    DB::rollback();
+                }  
+
+            }//empty query
+        }//ajax               
+    }//class
 
     public function getHorario($id_curProf)
     {
@@ -96,7 +122,7 @@ class Matriculas extends Controller
     {
     //información, y validación delrecibo
         $recibo = $request->comprobante; //numero de recibo
-        $query =  DB::select("select * from matriculas,facturas where (matriculas.recibo_banco='$recibo' or facturas.recibo_banco='$recibo' )"); //consulta que me dicesi el recibo existe
+        $query =  DB::select("select * from facturas where facturas.recibo_banco='$recibo'"); //consulta que me dicesi el recibo existe
         //validación
         
         if(empty($query) && $recibo!=""){
@@ -130,10 +156,10 @@ class Matriculas extends Controller
         } 
     }
 
-    public function talleres($idEstud)
+    public function talleres()
     {
       
-        $estud = Estudiante::find($idEstud);
+        $estud = DB::select('select * from estudiantes WHERE estudiantes.delete = 0');
     ///Obtención del ciclo 
         $idciclo = DB::select("select id from ciclos WHERE ciclos.habilitado = 1");
         $id_ciclo = 0;
@@ -144,7 +170,7 @@ class Matriculas extends Controller
         //obtengo los id de cursos y los profes y del ciclo lectivo activo
         $curProfs = DB::select("select * from cur_profs where cur_profs.id_ciclo ='$id_ciclo'");
         //todos los cursos
-        $cursos = DB::select('select * from cursos WHERE cursos.delete = 0 and cursos.tipo="Taller"');
+        $cursos = DB::select('select * from cursos WHERE cursos.delete = 0 ');
         //todos los profesores     
         $profes = DB::select('select * from profesors WHERE profesors.delete = 0');
 
@@ -152,16 +178,56 @@ class Matriculas extends Controller
                                                     'ciclo'=>$ciclo,
                                                     'curProfs'=>$curProfs,
                                                     'cursos'=>$cursos,
-                                                    'profes'=>$profes,
-                                                    'recibo'=>$recibo,]);         
+                                                    'profes'=>$profes]);         
     }
 
 
 
+//*******************REGISTRO DE NOTAS*********************
 
+    public function buscaRegistar()
+    {
+        return view('matricula.buscaRegistar');
+    }
 
+    public function registarNotas($idEstud)
+    {
+        //get Estudiante
+        $estudiante = Estudiante::find($idEstud);
 
+        //get ciclo
+        $idciclo = DB::select("select id from ciclos WHERE ciclos.habilitado = 1");
+        $id_ciclo = 0;
+        foreach ($idciclo as $cic) {
+            $id_ciclo = $cic->id;
+        }
+        $ciclo = Ciclo::find($id_ciclo);
 
+        //get matriculas
+        $matriculas = DB::select("select * from matriculas WHERE matriculas.id_estudiante = $idEstud and matriculas.nota = 0");
+        //get Cursos
+        $query="select c.nombre AS nameCurso, p.nombre AS nameProf, p.apellidos AS apellidosProf, cp.id FROM cursos as c JOIN cur_profs AS cp ON (cp.id_curso=c.id) JOIN profesors AS p ON(cp.id_prof=p.id AND cp.id_ciclo=$id_ciclo)";
+        $cursos = DB::select($query);
+        return view('matricula.registarNotas')->with(['estudiantes'=>$estudiante,
+                                                    'ciclo'=>$ciclo,
+                                                    'cursos'=>$cursos,
+                                                    'matriculas'=>$matriculas]);
+    }
+
+    public function asignarNota(Request $request)
+    {
+        $idMatri = $request->idMatricula;
+        $nota = $request->nota;
+
+        $matri = matricula::find($idMatri);
+        $matri->nota =  $nota;
+
+        if($matri->update()){
+            return back()->with('msj','Excelente! La nota ha sido modificada');
+        }else{
+            return back()->with('msj2', 'Opa!, algo pasó. Por favor reintente más tarde');
+        }
+    }
 
 
 

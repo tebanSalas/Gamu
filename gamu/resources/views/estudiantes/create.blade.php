@@ -92,7 +92,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="email">Correo Electrónico:</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="email" placeholder="Ingrese la dirección de correo electrónico" required>
+                      <input type="email" class="form-control" name="email" placeholder="Ingrese la dirección de correo electrónico" required>
             <!-- validación detelefonoa -->       
                        @if ($errors->has('email'))
                         <span class="help-block">
@@ -170,7 +170,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="email_emergencia">Correo Electrónico:</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="email_emergencia" placeholder="Ingrese la dirección de correo electrónico" required>
+                      <input type="email" class="form-control" name="email_emergencia" placeholder="Ingrese la dirección de correo electrónico" required>
             <!-- validación email_emergencia-->       
                        @if ($errors->has('email_emergencia'))
                         <span class="help-block">

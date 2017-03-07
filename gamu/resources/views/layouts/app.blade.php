@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Escuela Música Orosi</title>
+    <title>Sistema de Escuelas de Música</title>
 
     <!-- Styles -->
         <!-- Bootstrap core CSS -->
@@ -18,8 +18,7 @@
     <!-- Custom styles for this template -->
     <link href="/css/style.css" rel="stylesheet">
     <link href="/css/font-awesome.min.css" rel="stylesheet">    
-    <script src="/js/modernizr.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
    
 
     <!-- Scripts -->

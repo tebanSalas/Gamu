@@ -15,8 +15,8 @@
 
 <div class="container">
     <div class="row">
-        <h1 align="center">Bienvenidos a la Escuela Comunal de Musica de Orosi </h1>
-        <img src="/img/Logo_EscuelaOrosi.jpg" class="img-responsive" alt="Logo Escuela Comunal de Musica de Orosi" width="500" height="500" >
+        <h1 align="center">Bienvenidos al Sistema de Administración del Sistema de Escuelas de Música de Paraíso  </h1>
+        <img src="/img/logoSEMUSPAR.jpg" alt="Logo Escuela Comunal de Musica de Orosi" class="img-rounded"  width="500" height="500" >
     </div>
 </div>
 @endsection

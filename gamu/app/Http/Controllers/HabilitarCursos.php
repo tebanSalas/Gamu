@@ -75,17 +75,28 @@ class HabilitarCursos extends Controller
      */
     public function store(Request $request)
     {
-        $curProf =  new CurProf();
-        $curProf->id_curso = $request->cursos;
-        $curProf->id_prof= $request->profesores;
-        $curProf->horario= $request->horario;
-        $curProf->id_ciclo= $request->ciclo;
+        $prof= $request->profesores;
+        $curso = $request->cursos;
+        $query = DB::select("select * from cur_profs WHERE cur_profs.id_curso = $curso and cur_profs.id_prof = $prof");
 
-        if($curProf->save()){
-            return back()->with('msj','Excelente! El curso se guardo con éxito.');
-        }else{
+        if(empty($query)){
+            $curProf =  new CurProf();
+            $curProf->id_curso = $request->cursos;
+            $curProf->id_prof= $request->profesores;
+            $curProf->horario= $request->horario;
+            $curProf->id_ciclo= $request->ciclo;
+            $curProf->cupo = $request->cupo;
+
+            if($curProf->save()){
+               return back()->with('msj','Excelente! El curso se guardo con éxito.');
+            }else{
             return back()->with('msj2', "Opa!, algo pasó. Por favor revisa los datos.");
-        }
+            }
+        }else{
+            return back()->with('msj2', "Opa!, El profesor ya fue asignado a impartir este curso, para el presente ciclo lectivo");
+            }
+
+        
     }
 
     /**

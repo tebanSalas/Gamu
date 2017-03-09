@@ -15,8 +15,17 @@
 
 <div class="container">
     <div class="row">
+    	<div class="form-group">
+    		<div class="col-md-2 col-md-offset-10">
+				<label >{{ $fecha }} </br> {{ $ciclo->ciclo }}, Año {{ $ciclo->year }}</label>
+    		</div>
+    	</div>
+   
         <h1 align="center">Bienvenidos al Sistema de Administración del Sistema de Escuelas de Música de Paraíso  </h1>
         <img src="/img/logoSEMUSPAR.jpg" alt="Logo Escuela Comunal de Musica de Orosi" class="img-rounded"  width="500" height="500" >
     </div>
+    
+    	
+    
 </div>
 @endsection

@@ -27,10 +27,10 @@
           <p><br/><a href="/ListaEstudiantesPDF" class="btn btn-theme">Entar</a></p>
         </div>  
         <div class="col-md-3">
-          <i class="fa fa-list"></i>
-          <h4>Informe de matrícula</h4>
-          <p>Acá se podrá obtener un informe de matricula de cada estudiante en particular que se podrá imprimir en cualquier momento y ser entregado al estudiante. </p>
-          <p><br/><a href="#" class="btn btn-theme">Entar</a></p>
+          <i class="fa fa-check"></i>
+          <h4>Activación de Estudiantes</h4>
+          <p>Lista los estudiantes que han sido inactivados, y brinda la posibilidad de poder activarlos para que puedan incorporarse como estudiantes regulares. </p>
+          <p><br/><a href="/indexInactivos" class="btn btn-theme">Entar</a></p>
         </div>           
       </div>
     </div>

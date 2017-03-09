@@ -54,7 +54,7 @@
 					@endforeach 
 				@endforeach                	
                     <div class="col-xs-offset-5 col-xs-2">
-                    	<input type="submit" id="btntaller" class="btn btn-warning" value="Volver">
+                    	<a href="javascript:history.back(-1);"  class="btn btn-warning" title="Ir la página anterior">Volver</a>
                     </div>
                 
             
@@ -62,7 +62,9 @@
 	</div>
 </div>
  @endsection
-
+<script>
+	
+</script>
  @section('scripts')
    
 @endsection

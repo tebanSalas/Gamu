@@ -45,6 +45,10 @@ Route::resource('/profesores', 'Profesors');
 Route::resource('/habilitarCursos', 'HabilitarCursos');
 //matriculas
 Route::resource('/matriculas', 'Matriculas');
+//Facturas
+Route::resource('/facturas', 'Facturas');
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
@@ -97,4 +101,8 @@ Route::GET('/buscaRegistar', 'Matriculas@buscaRegistar');
 Route::get('/registarNotas/{idEstud}', 'Matriculas@registarNotas');
 Route::POST('/asignarNota', 'Matriculas@asignarNota');
 
-
+//activación de estudiantes
+Route::get('/activar', 'Estudiantes@activarEstudiante');
+Route::get('/inactivos', 'Estudiantes@estudiantesInactivos');
+Route::get('/indexInactivos', 'Estudiantes@indexInactivos');
+Route::get('/buscarInactivo/{nombre}', 'Estudiantes@buscarInactivo');

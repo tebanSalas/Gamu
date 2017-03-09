@@ -1,5 +1,5 @@
 <?php
-
+ 
 namespace gamu\Http\Controllers;
 
 use Illuminate\Http\Request;

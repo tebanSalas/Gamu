@@ -107,7 +107,10 @@
                     <label class="control-label col-sm-2" for="sede">Sede:</label>
                     <div class="col-sm-10">
                       <select class="btn btn-default" name="sede" required>
+                        <option value="Paraiso">Paraíso</option>
+                        <option value="Llanos de Santa Lucia">Llanos de Santa Lucia</option>
                         <option value="Orosi">Orosi</option>
+                        <option value="Santiago">Santiago</option>
                       </select>
             <!-- validación detelefonoa -->       
                        @if ($errors->has('sede'))
@@ -216,9 +219,9 @@
 </div>
 
 <script>
-$(document).ready(function(){
+  $(document).ready(function(){
     $('[data-toggle="popover"]').popover();
-});
+  });
 </script> 
 
  @endsection

@@ -28,9 +28,10 @@
                 <!-- Instrumentos-->
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Instrumentos<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="../../../AsiganarInstrumentos"><i class="fa fa-link" aria-hidden="true"></i> Prestamo</a></li>
                         <li><a href="../../../instrumentos/create"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Nuevo</a></li>
                         <li><a href="../../../instrumentos"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</a></li>
+                        <li><a href="../../../AsiganarInstrumentos"><i class="fa fa-link" aria-hidden="true"></i> Prestamo</a></li>
+                        <li><a href=""><i class="fa fa-chain-broken" aria-hidden="true"></i> Devolución de Instrumentos</a></li>
                         <li><a href="../../../seleccionReporte"><i class="fa fa-line-chart" aria-hidden="true"></i> Reportes</a></li>
                     </ul>
                 </li>
@@ -67,7 +68,7 @@
                 <!-- Pago-->
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Pago <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href=""><i class="fa fa-usd" aria-hidden="true"></i> Registrar Pagos</a></li>
+                        <li><a href="../../../facturas"><i class="fa fa-usd" aria-hidden="true"></i> Registrar Pagos</a></li>
                         <li><a href=""><i class="fa fa-money" aria-hidden="true"></i> Pagos Estudiante</a></li>
                         <li><a href=""><i class="fa fa-bar-chart" aria-hidden="true"></i> Morosos</a></li>
                     </ul>

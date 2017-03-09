@@ -12,7 +12,7 @@ use gamu\Curso;
 use gamu\Profesor;
 use gamu\CurProf;
 use gamu\Factura;
-
+ 
 class Matriculas extends Controller
 {
 
@@ -62,6 +62,9 @@ class Matriculas extends Controller
      */
     public function store(Request $request)
     {
+
+    //aca lo que hago es validar si la petición es de tipo ajax, luego obtengo los valores del idestudiante, del idcurprof, del numero recibo, y validar que la matricula no exista, osea que el estudiante no se haya matriculado ya en se curso. si la matricula no existe, procedemos a crearla, para esto primero abrimos una transacción creamos una factura para todo el proceso de matricula de un estudiante. (esto quiere decir que si matriculo en 5 cursos todos van a llevar el mismo id de la factura). si la factura no existe la creo y la asigno a una matricula, si la factura ya existe solamente asigno la factura a la matricula.
+         
         if($request->ajax()){
             $id_estu = $request->estudiante;
             $curProf = $request->curProf;
@@ -97,10 +100,19 @@ class Matriculas extends Controller
                 $matri->recibo_banco = $idFactura;
                 
                 if($matri->save()){
-                    DB::commit();
-                    return response()->json([
-                        "mjs"=> "Matriculado"
-                    ]);
+                    $cursoprofe = CurProf::find($curProf);
+                    $cursoprofe->cupo = $cursoprofe->cupo - 1;
+                    if($cursoprofe->cupo>0){
+                        if($cursoprofe->update()){
+                            DB::commit();
+                            return response()->json([
+                                "mjs"=> "Matriculado"
+                            ]);
+                        }else{
+                            DB::rollback();
+                        }
+                    }//$cursoprofe>0
+                      
                 }else{
                     DB::rollback();
                 }  
@@ -174,7 +186,7 @@ class Matriculas extends Controller
         //todos los profesores     
         $profes = DB::select('select * from profesors WHERE profesors.delete = 0');
 
-        return view('matricula.talleres')->with(['estudiantes'=>$estud,
+        return view('matricula.talleres')->with(['estud'=>$estud,
                                                     'ciclo'=>$ciclo,
                                                     'curProfs'=>$curProfs,
                                                     'cursos'=>$cursos,

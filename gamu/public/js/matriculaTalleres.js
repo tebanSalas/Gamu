@@ -1,4 +1,4 @@
-//llena el cuadro de horario de talleres
+//llena el cuadro de horario de talleres 
 $("#M_taller").change(function(){
 	var id_curProf = $("#M_taller").val();
 	var route = "http://localhost:8000/getHorario/"+id_curProf+"";
@@ -12,7 +12,7 @@ $("#M_taller").change(function(){
 //guarda la matricula de talleres
 $("#btntaller").click(function(){
 	var id_curProf = $("#M_taller").val();
-	var id_estudiante= $("#estud").val();
+	var id_estudiante= $("#estudiantes").val();
 	var recibo= 0;
 	var id_ciclo= $("#idCiclo").val();
 	var route = "http://localhost:8000/matriculas";

@@ -108,7 +108,29 @@
                     <label class="control-label col-sm-2" for="sede">Sede:</label>
                     <div class="col-sm-10">
                       <select class="btn btn-default" name="sede" required>
-                        <option value="Orosi">Orosi</option>
+                        @if($estud->sede === 'Paraiso')
+                          <option value="Paraiso" selected>Paraíso</option>
+                          <option value="Llanos de Santa Lucia">Llanos de Santa Lucia</option>
+                          <option value="Orosi">Orosi</option>
+                          <option value="Santiago">Santiago</option>                      
+                        @elseif ($estud->sede === 'Llanos de Santa Lucia')
+                          <option value="Paraiso">Paraíso</option>
+                          <option value="Llanos de Santa Lucia" selected>Llanos de Santa Lucia</option>
+                          <option value="Orosi">Orosi</option>
+                          <option value="Santiago">Santiago</option>
+                        @elseif ($estud->sede === 'Orosi')
+                          <option value="Paraiso">Paraíso</option>
+                          <option value="Llanos de Santa Lucia">Llanos de Santa Lucia</option>
+                          <option value="Orosi" selected>Orosi</option>
+                          <option value="Santiago">Santiago</option>
+                        @elseif ($estud->sede === 'Santiago')
+                          <option value="Paraiso">Paraíso</option>
+                          <option value="Llanos de Santa Lucia">Llanos de Santa Lucia</option>
+                          <option value="Orosi">Orosi</option>
+                          <option value="Santiago" selected>Santiago</option>  
+
+                        @endif
+                          
                       </select>
             <!-- validación detelefonoa -->       
                        @if ($errors->has('sede'))

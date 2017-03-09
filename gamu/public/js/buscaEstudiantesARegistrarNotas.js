@@ -24,8 +24,7 @@ $("#btnBuscar").click(function(){
 			table.append("<tr><td>"+value.nombre+" "+value.apellidos+
 				"</td><td>"+value.cedula+"</td><td>"+value.telefono+
 				"</td><td>"+value.nombre_padre1+" "+value.tel_padre1+
-				"</td><td><button type='submit' class='btn btn-success' value="+value.id+
-				" onclick='Mostrar(this);'>Registar Notas</button></td></tr>");
+				"</td><td><a href='http://localhost:8000/registarNotas/"+value.id+"' class='btn btn-warning'>Registar Notas</a></td></tr>");
 		});
 	});
 });

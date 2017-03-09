@@ -178,5 +178,45 @@ class Estudiantes extends Controller
             );
         
     }
+
+    //**************************** ACTIVACION DE ESTUDIANTES ************************************
+   public function indexInactivos()
+    {
+        return view('estudiantes.activacion.estudiantesInactivos') ;  
+    }
+    public function estudiantesInactivos()
+    {
+        $estudiantes = DB::select('select * from estudiantes WHERE estudiantes.delete = 1');
+            return response()->json(
+                $estudiantes
+            );   
+    }
+
+    public function activarEstudiante(Request $request)
+    {
+        
+        $estudiante = Estudiante::find($request->id);
+        $estudiante->delete = 0;
+      
+        
+        if($estudiante->update()){
+            return redirect('/estudiantes')->with('msj','Excelente! El estudiante ha sido habilitado de nuevo');
+        }else{
+            return back()->with('msj2', 'Opa!, algo pasó. Por favor revisa los datos');
+        }
+        
+    }
+    public function buscarInactivo($nombre)
+    {
+        
+        $con = 'select * from estudiantes WHERE estudiantes.delete = 1 && estudiantes.nombre like "%';
+        $sulta = $nombre.'%"';
+        $consulta = $con . $sulta;
+        $estudiantes = DB::select($consulta);
+            return response()->json(
+                $estudiantes
+            );
+        
+    }
  
 } 

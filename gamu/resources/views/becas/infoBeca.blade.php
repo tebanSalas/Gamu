@@ -44,7 +44,7 @@
 		}
 	</style>
 
-<h2>Escuela Comunal de Música de Orosi</h2>
+<h2>Sistema de Escuelas de Música de Paraíso</h2>
 
 </head> 
 

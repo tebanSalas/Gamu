@@ -16,17 +16,17 @@
 							<tr>
 				 				<td><strong>Inventario de instrumentos</strong></td>
 				 				<td>Desplega una lista de la totalidad de los instrumentos que han sido registrados, con todas sus características</td>
-				 				<td><a href="" class="btn btn-warning">Ver </a> </td>
+				 				<td><a href="../../inventarioPDF" class="btn btn-warning">Ver </a> </td>
 				 			</tr>
 				 			<tr>
 				 				<td><strong>Instrumentos Disponibles</strong></td>
 				 				<td>Muestra una lista de todos los instrumentos que aún no tienen un estudiante asignado </td>
-				 				<td><a href="" class="btn btn-warning">Ver </a>  </td>
+				 				<td><a href="../../instruDisponiblesPDF" class="btn btn-warning">Ver </a>  </td>
 				 			</tr>
 				 			<tr>
 				 				<td><strong>Instrumentos Ocupados</strong></td>
 				 				<td>Muestra una lista de todos los instrumentos que ya fueron asignados, además de los datos del estudiante que posee el instrumento. </td>
-				 				<td><a href="" class="btn btn-warning">Ver </a>  </td>
+				 				<td><a href="../../instrumentosOcupadosPDF" class="btn btn-warning">Ver </a>  </td>
 				 			</tr>
 				 		
 			 		</tbody>

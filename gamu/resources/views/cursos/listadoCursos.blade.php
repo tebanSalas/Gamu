@@ -12,24 +12,7 @@
 		div{
 			margin: 10px 0px 10px 50px;
 		}
-		label{
-			font: arial;
-			font-size: 16px;
-
-		}
-		#b{
-			font-weight: bold;
-		}
-		#a{
-			text-align: center;
-			font-size: 18px;
-			color: #384452;
-			font-weight: bold;
-		}
-		#c{
-			margin-left: 50px;
-			color: #384452;
-		}
+		
 		h3{
 			color: #384452;
     		text-align: center;
@@ -55,11 +38,12 @@
 		td {
     		text-align: Center;
     		padding: 10px;
+    		border-bottom: 1px solid #384452; 
 		}
-		tr:nth-child(even){background-color: #f2f2f2}
+		tr:nth-child(even){background-color: #FFFFFF}
 	</style>
 
-<h2>Escuela Comunal de Música de Orosi</h2>
+<h2>Sistema de Escuelas de Música de Paraíso</h2>
 
 </head> 
 
@@ -72,8 +56,8 @@
 		<tr>
 			<th>Nombre</th>
 			<th>Sigla</th>
-			<th>Cupo</th>
 			<th>Tipo</th>
+		</tr>
 	</thead>
 	<tbody>
 
@@ -82,7 +66,6 @@
 			<tr>
 				 <td>{{ $curso->nombre }} </td>
 				 <td>{{ $curso->sigla }}</td>
-				 <td>{{ $curso->cupo }}</td>
 				 <td>{{ $curso->tipo }}</td>
 			</tr>
 			@endif	

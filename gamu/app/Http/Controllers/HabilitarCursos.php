@@ -64,7 +64,16 @@ class HabilitarCursos extends Controller
      */
     public function create()
     {
-        //
+        $fech_Actual = "Informe emitido el: " . date("d") . " del " . date("m") . " de " . date("Y");
+
+        $query = "select p.nombre AS pNombre, p.apellidos AS pApellidos, c.nombre AS cNombre, c.sigla AS cSigla, cp.horario, cp.cupo
+            FROM cur_profs as cp
+            JOIN  profesors as p ON (p.id =cp.id_prof)
+            JOIN cursos as c ON (c.id = cp.id_curso)";
+        $cursos = DB::select($query);
+
+        $pdf = \PDF::loadView('cursos/guiaCursosHorariosPDF',['cursos' => $cursos],['fecha' => $fech_Actual]);
+        return $pdf->stream('GuiaCusosHorarios.pdf');
     }
 
     /**

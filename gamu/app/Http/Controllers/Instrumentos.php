@@ -195,4 +195,83 @@ class Instrumentos extends Controller
     public function reportesIntrumentos(){
         return view('instrumentos.seleccionReporte');
     }
+
+    //*****************************DEVOLUCION******************************
+
+    public function devolucion()
+    {
+        $estud = DB::select('select * from estudiantes WHERE estudiantes.delete = 0');
+        return view('instrumentos.devolucion')->with(['estud'=>$estud]);
+    }
+    public function getPrestamo($id)
+    {
+        $query="select i.nombre as nombre, i.serie AS serie, i.marca AS marca, i.id AS id , p.id AS idPrestamo
+                FROM prestamos as p 
+                JOIN instrumentos AS i ON (p.id_estudiante=$id AND i.id =p.id_instrumento)";
+
+        $prestamo = DB::select($query);
+        return response()->json(
+                $prestamo
+            );
+    }
+    public function getInstrumento($id)
+    {
+        $query="select i.nombre as nombre, i.serie AS serie, i.marca AS marca, i.id AS id , p.id AS idPrestamo
+                FROM instrumentos as i
+                JOIN prestamos as p ON (i.id =p.id_instrumento and p.id_instrumento =$id)";
+
+        $prestamo = DB::select($query);
+        return response()->json(
+                $prestamo
+            );
+    }
+    public function desvincular(Request $request)
+    {   
+        
+        $id = $request->idPrestamo;
+        $idInst = $request->instrumentos;
+        $instrumento =  Instrumento::find($idInst);
+        $instrumento->disponibilidad = "Disponible";
+        DB::beginTransaction();
+        if($instrumento->update()){
+            $prestamo = Prestamo::find($id);
+            if($prestamo->delete($id)){
+                DB::commit();
+                return back()->with('msj','Excelente! El instrumento ahora está disponible');
+            }else{
+                 DB::rollback();
+                return back()->with('msj2', 'Opa!, algo pasó. No ha sido posible tramitar la devolución. Por favor intente más tarde');
+            }
+        }else{
+             DB::rollback();
+             return back()->with('msj2', 'Opa!, algo pasó. No se ha podido actualizar la información del instrumento, por lo que la devolución no se puede tramitar en este momento');
+        }
+    }
+
+    //***************************** REPORTES *****************************
+    public function inventarioPDF()
+    {
+        $fech_Actual = "Informe emitido el: " . date("d") . " del " . date("m") . " de " . date("Y");
+        $instrumentos = DB::select('select * from instrumentos WHERE instrumentos.delete = 0');
+        $pdf = \PDF::loadView('instrumentos/reportes/inventario',['instrumentos' => $instrumentos],['fecha' => $fech_Actual]);
+        return $pdf->stream('InventarioInstrumentos.pdf');
+    }
+    public function instruDisponiblesPDF()
+    {
+        $fech_Actual = "Informe emitido el: " . date("d") . " del " . date("m") . " de " . date("Y");
+        $instrumentos = DB::select('select * from instrumentos WHERE instrumentos.delete = 0 and instrumentos.disponibilidad = "Disponible"');
+        $pdf = \PDF::loadView('instrumentos/reportes/inventario',['instrumentos' => $instrumentos],['fecha' => $fech_Actual]);
+        return $pdf->stream('InventarioInstrumentos.pdf');
+    }
+    public function instrumentosOcupadosPDF()
+    {
+        $fech_Actual = "Informe emitido el: " . date("d") . " del " . date("m") . " de " . date("Y");
+        $query = "select i.nombre as inombre, i.serie AS iserie, i.marca AS imarca, e.nombre AS enombre, e.apellidos AS eapellidos, e.cedula AS eced 
+            FROM prestamos as p
+            JOIN  instrumentos as i ON (i.id =p.id_instrumento)
+            JOIN estudiantes as e ON (p.id_estudiante = e.id)";
+        $instrumentos = DB::select($query);
+        $pdf = \PDF::loadView('instrumentos/reportes/instrumentosOcupados',['instrumentos' => $instrumentos],['fecha' => $fech_Actual]);
+        return $pdf->stream('InventarioInstrumentos.pdf');
+    }
 }

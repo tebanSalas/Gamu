@@ -68,13 +68,16 @@ Route::get('/buscarCurso', 'Cursos@buscarNombre');
 Route::get('/buscarBeca', 'Becas@buscarNombre');
 Route::get('/buscarInstrumento', 'Instrumentos@buscarNombre');
 Route::get('/estuMatricu/{nombre}', 'Matriculas@buscarEstudiante');
+
 //reporteslistados
 Route::get('/ListaEstudiantesPDF', 'Estudiantes@listadoEstudiantes');
 Route::get('/ListaProfesoresPDF', 'Profesors@listadoProfesores');
 Route::get('/ListaCursosPDF', 'Cursos@listadoCursos');
 Route::get('/ListaBecasPDF', 'Becas@listadoBecas');
 Route::get('/seleccionReporte', 'Instrumentos@reportesIntrumentos');
-
+Route::get('/inventarioPDF', 'Instrumentos@inventarioPDF');
+Route::get('/instruDisponiblesPDF', 'Instrumentos@instruDisponiblesPDF');
+Route::get('/instrumentosOcupadosPDF', 'Instrumentos@instrumentosOcupadosPDF');
 
 //Asiganar Beca
 Route::get('/AsiganarBecas', 'Becas@asignar'); 
@@ -106,3 +109,9 @@ Route::get('/activar', 'Estudiantes@activarEstudiante');
 Route::get('/inactivos', 'Estudiantes@estudiantesInactivos');
 Route::get('/indexInactivos', 'Estudiantes@indexInactivos');
 Route::get('/buscarInactivo/{nombre}', 'Estudiantes@buscarInactivo');
+
+//devolucion de instrumentos 
+Route::get('/devolucion', 'Instrumentos@devolucion');
+Route::get('/getPrestamo/{id}', 'Instrumentos@getPrestamo');
+Route::get('/getInstrumento/{id}', 'Instrumentos@getInstrumento');
+Route::post('/desvincular', 'Instrumentos@desvincular');

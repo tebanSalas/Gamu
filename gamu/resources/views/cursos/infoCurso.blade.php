@@ -44,28 +44,24 @@
 		}
 	</style>
 
-<h2>Escuela Comunal de Música de Orosi</h2>
+<h2>Sistema de Escuelas de Música de Paraíso</h2>
 
 </head> 
 
 <body>
 <h3>Información del Curso: {{ $curso->nombre }}</h3>
-<!-- Nombre -->
+
 	<div >
   		<label id="b" >Nombre: </label>
   		<label >{{ $curso->nombre }} </label>
 	</div>  
-<!-- cedula -->
+
 	<div >
   		<label id="b">Sigla:</label>
   		<label >{{ $curso->sigla }}</label>
 	</div> 
-<!-- Fecha de nacimiento -->
-	<div >
-  		<label id="b">Cupo:</label>
-  		<label >{{ $curso->cupo }} Espacios.</label>
-	</div>
-<!-- telefono -->
+
+
 	<div >
   		<label id="b">Tipo:</label>
   		<label >{{ $curso->tipo }}</label>

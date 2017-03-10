@@ -26,7 +26,9 @@ class Prestamos extends Controller
      */
     public function create()
     {
-        //
+        //devolución
+        $estud = DB::select('select * from estudiantes WHERE estudiantes.delete = 0');
+        return view('instrumentos.devolucion')->with(['estud'=>$estud]);
     }
 
     /**

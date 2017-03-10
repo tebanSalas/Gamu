@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<title>Lista de Estudiantes</title>
+<title>Lista de Cursos</title>
 	<style>
 		h2 {
 			border-bottom-style: solid;
@@ -40,7 +40,7 @@
     		padding: 10px;
     		border-bottom: 1px solid #384452; 
 		}
-		tr:nth-child(even){background-color: #FFFFFF}}
+		tr:nth-child(even){background-color: #FFFFFF}
 	</style>
 
 <h2>Sistema de Escuelas de Música de Paraíso</h2>
@@ -48,29 +48,24 @@
 </head> 
 
 <body>
-<h3>Listado de Estudiantes</h3>
+<h3>Listado de Cursos</h3>
 
-<table class="table table-striped">
+<table >
 		 		
 	<thead>
 		<tr>
 			<th>Nombre</th>
-			<th>Cédula</th>
-			<th>Nacimiento</th>
-			<th>Teléfono</th>
-			<th>Padre</th>
+			<th>Sigla</th>
+			<th>Tipo</th>
 	</thead>
 	<tbody>
 
-		@foreach($estud as $estu)
-			@if($estu->delete == 0)	
+		@foreach($cursos as $curso)
+			@if($curso->delete == 0)	
 			<tr>
-				 <td>{{ $estu->nombre }} {{ $estu->apellidos }}</td>
-				 <td>{{ $estu->cedula }}</td>
-				 <td>{{ $estu->fecha_nacimiento }}</td>
-				 <td>{{ $estu->telefono }}</td>
-				 <td>{{ $estu->nombre_padre1 }} {{ $estu->tel_padre1 }} 
-				 </td>
+				 <td>{{ $curso->nombre }} </td>
+				 <td>{{ $curso->sigla }}</td>
+				 <td>{{ $curso->tipo }}</td>
 			</tr>
 			@endif	
 		@endforeach

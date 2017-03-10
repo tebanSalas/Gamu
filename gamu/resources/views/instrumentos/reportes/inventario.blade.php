@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 
 <head>
@@ -40,7 +40,7 @@
     		padding: 10px;
     		border-bottom: 1px solid #384452; 
 		}
-		tr:nth-child(even){background-color: #FFFFFF}}
+		tr:nth-child(even){background-color: #FFFFFF}
 	</style>
 
 <h2>Sistema de Escuelas de Música de Paraíso</h2>
@@ -48,31 +48,30 @@
 </head> 
 
 <body>
-<h3>Listado de Estudiantes</h3>
+<h3>Inventario de Instrumentos</h3>
 
 <table class="table table-striped">
 		 		
 	<thead>
 		<tr>
 			<th>Nombre</th>
-			<th>Cédula</th>
-			<th>Nacimiento</th>
-			<th>Teléfono</th>
-			<th>Padre</th>
+			<th>Serie</th>
+			<th>Marca</th>
+			<th>Num. Activo</th>
+			<th>Estado</th>
+			<th>Disponibilidad</th>
 	</thead>
 	<tbody>
 
-		@foreach($estud as $estu)
-			@if($estu->delete == 0)	
+		@foreach($instrumentos as $instru)
 			<tr>
-				 <td>{{ $estu->nombre }} {{ $estu->apellidos }}</td>
-				 <td>{{ $estu->cedula }}</td>
-				 <td>{{ $estu->fecha_nacimiento }}</td>
-				 <td>{{ $estu->telefono }}</td>
-				 <td>{{ $estu->nombre_padre1 }} {{ $estu->tel_padre1 }} 
-				 </td>
-			</tr>
-			@endif	
+				 <td>{{ $instru->nombre }} </td>
+				 <td>{{ $instru->serie }}</td>
+				 <td>{{ $instru->marca }}</td>
+				 <td>{{ $instru->num_activo }}</td>
+				 <td>{{ $instru->estado }}</td>
+				 <td>{{ $instru->disponibilidad }}</td>
+			</tr>	
 		@endforeach
 	</tbody>
 		 		

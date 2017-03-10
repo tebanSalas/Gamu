@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 
 <head>
@@ -12,7 +12,6 @@
 		div{
 			margin: 10px 0px 10px 50px;
 		}
-		
 		h3{
 			color: #384452;
     		text-align: center;
@@ -40,7 +39,7 @@
     		padding: 10px;
     		border-bottom: 1px solid #384452; 
 		}
-		tr:nth-child(even){background-color: #FFFFFF}}
+		tr:nth-child(even){background-color: #FFFFFF}
 	</style>
 
 <h2>Sistema de Escuelas de Música de Paraíso</h2>
@@ -48,31 +47,25 @@
 </head> 
 
 <body>
-<h3>Listado de Estudiantes</h3>
+<h3>Cursos, Profesores y Horarios. </h3>
 
 <table class="table table-striped">
 		 		
 	<thead>
 		<tr>
-			<th>Nombre</th>
-			<th>Cédula</th>
-			<th>Nacimiento</th>
-			<th>Teléfono</th>
-			<th>Padre</th>
+			<th>Curso</th>
+			<th>Profesor</th>
+			<th>Horario</th>
+			
 	</thead>
 	<tbody>
 
-		@foreach($estud as $estu)
-			@if($estu->delete == 0)	
+		@foreach($cursos as $curso)
 			<tr>
-				 <td>{{ $estu->nombre }} {{ $estu->apellidos }}</td>
-				 <td>{{ $estu->cedula }}</td>
-				 <td>{{ $estu->fecha_nacimiento }}</td>
-				 <td>{{ $estu->telefono }}</td>
-				 <td>{{ $estu->nombre_padre1 }} {{ $estu->tel_padre1 }} 
-				 </td>
-			</tr>
-			@endif	
+				 <td>{{ $curso->cNombre }} / Sigla: {{ $curso->cSigla }}</td>
+				 <td>{{ $curso->pNombre }} {{ $curso->pApellidos }}</td>
+				 <td>{{ $curso->horario }} Cupos: {{ $curso->cupo }}</td>
+			</tr>	
 		@endforeach
 	</tbody>
 		 		

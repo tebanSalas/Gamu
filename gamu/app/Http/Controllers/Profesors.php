@@ -144,4 +144,11 @@ class Profesors extends Controller
         return view('profesores.index')->with(['profes'=>$profesores]);
 
     }
+    public function profesCursos()
+    {//en desarrollo
+        $fech_Actual = "Informe emitido el: " . date("d") . " del " . date("m") . " de " . date("Y");
+        $profesores = Profesor::all();
+        $pdf = \PDF::loadView('profesores/listadoProfesores',['profesores' => $profesores],['fecha' => $fech_Actual]);
+        return $pdf->stream('profesores.pdf');
+    }
 }

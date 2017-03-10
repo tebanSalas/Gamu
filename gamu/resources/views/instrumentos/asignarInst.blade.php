@@ -39,7 +39,7 @@
 <!-- Beca -->
                     <div class="form-group">
                       <div class="col-md-2" >
-                        <label class="control-label col-sm-2" for="nombre">Beca</label>
+                        <label class="control-label col-sm-2" for="nombre">Instrumento</label>
                       </div>
 
                       <div class="col-md-8" >

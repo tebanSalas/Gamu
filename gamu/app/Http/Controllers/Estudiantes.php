@@ -141,7 +141,7 @@ class Estudiantes extends Controller
             return back()->with('msj2', 'Opa!, algo pasó. Por favor revisa los datos');
         }
         
-    }
+    } 
 
     public function listadoEstudiantes()
     {

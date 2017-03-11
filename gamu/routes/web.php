@@ -78,6 +78,11 @@ Route::get('/seleccionReporte', 'Instrumentos@reportesIntrumentos');
 Route::get('/inventarioPDF', 'Instrumentos@inventarioPDF');
 Route::get('/instruDisponiblesPDF', 'Instrumentos@instruDisponiblesPDF');
 Route::get('/instrumentosOcupadosPDF', 'Instrumentos@instrumentosOcupadosPDF');
+Route::get('/historicoPagos/{id}', 'Facturas@historicoPagos');
+Route::get('/buscaEstudianteHistorico', 'Facturas@buscaEstudianteHistorico');
+Route::get('/informeMatricula/{id}', 'Matriculas@informeMatricula');
+Route::get('/buscaEstudianteInformeMatricula', 'Matriculas@buscaEstudianteInformeMatricula');
+
 
 //Asiganar Beca
 Route::get('/AsiganarBecas', 'Becas@asignar'); 

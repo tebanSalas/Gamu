@@ -48,9 +48,9 @@
 </head> 
 
 <body>
-@foreach($pago as $p)
-	@if($loop->last)	
-		<h3>Historico de pagos del estudiante {{ $p->nombre }} {{ $p->apellidos }} Ced.{{ $p->cedula }}</h3>
+@foreach($matricula as $m)
+	@if($loop->first)	
+		<h3>Informe de matricula del estudiante {{ $m->nombre }} {{ $m->apellidos }} Ced.{{ $m->cedula }}. Para el ciclo {{ $m->ciclo }} del {{ $m->year }}</h3>
 	@endif		
 @endforeach
 
@@ -59,17 +59,17 @@
 		 		
 	<thead>
 		<tr>
-			<th>Mes Pagado</th>
-			<th>Fecha Pago</th>
-			<th>Núm. Recibo</th>
+			<th>Curso</th>
+			<th>Profesor</th>
+			<th>Horario</th>
 	</thead>
 	<tbody>
 
-		@foreach($pago as $p)	
+		@foreach($matricula as $m)	
 			<tr>
-				 <td>{{ $p->mes_cobro }} </td>
-				 <td>{{ $p->fecha_pago }}</td>
-				 <td>{{ $p->recibo_banco }}</td>
+				 <td>{{ $m->cSigla }} / {{ $m->cNombre }}</td>
+				 <td>{{ $m->pNombre }} {{ $m->pApellidos }}</td>
+				 <td>{{ $m->horario }}</td>
 			</tr>
 		@endforeach
 	</tbody>

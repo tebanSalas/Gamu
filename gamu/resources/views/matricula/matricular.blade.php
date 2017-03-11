@@ -55,7 +55,7 @@
                         		@if($curso->id == $cp->id_curso && $curso->tipo == "Teoricos")
                         			@foreach ($profes as $profe)
                         				@if($profe->id == $cp->id_prof)
-                        					<option value="{{ $cp->id }}">{{ $curso->nombre }} {{ $profe->nombre}} {{ $profe->apellidos }}</option>
+                        					<option value="{{ $cp->id }}">Curso: {{ $curso->nombre }} - Profesor: {{ $profe->nombre}} {{ $profe->apellidos }} - Cupos {{ $cp->cupo }}</option>
                         				@endif	
                         			@endforeach	
                         		@endif
@@ -80,7 +80,7 @@
                         		@if($curso->id == $cp->id_curso && $curso->tipo == "Taller")
                         			@foreach ($profes as $profe)
                         				@if($profe->id == $cp->id_prof)
-                        					<option value="{{ $cp->id }}">{{ $curso->nombre }} {{ $profe->nombre}} {{ $profe->apellidos }}</option>
+                        					<option value="{{ $cp->id }}">Curso: {{ $curso->nombre }} - Profesor: {{ $profe->nombre}} {{ $profe->apellidos }} - Cupos {{ $cp->cupo }}</option>
                         				@endif	
                         			@endforeach	
                         		@endif
@@ -96,8 +96,12 @@
         </div>
 
         <div class="col-md-8 col-md-offset-2">
-            <button onclick="" class="btn btn-theme col-md-12">Concluir Matrícula</button>
+            <a href='/informeMatricula/{{ $estudiantes->id }} ' class='btn btn-theme'>Generar Informe</a>
+            <a href="javascript:history.back(-1);"  class="btn btn-warning" title="Terminar y volver">Volver</a>
         </div>
+        
+            
+        
 
         <a href="#" data-toggle="popover" data-placement="bottom" title="Informacón para matricular" data-content="La pantalla se encuentra dividida en 3 secciones, Instrumento, teoría, talleres. Para matricular a un estudiante en cualquiera de las áreas disponibles, basta con seleccionar el curso que desee, y presionar el botón “Matricular”. Esta operación es irreversible así que debe de estar muy seguro de la matrícula. Para terminar, presiona el botón “Concluir matrícula”.
         Es muy importante que el estudiante consulte la guia de cursos y horarios">Necesitas ayuda?</a> 

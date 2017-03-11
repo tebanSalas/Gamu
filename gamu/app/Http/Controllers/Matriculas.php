@@ -240,9 +240,27 @@ class Matriculas extends Controller
             return back()->with('msj2', 'Opa!, algo pasó. Por favor reintente más tarde');
         }
     }
+//*********************** REPORTE DE MATRICULAS *************************************
 
+    public function informeMatricula($id)
+    {
+        $fech_Actual = "Informe emitido el: " . date("d") . " del " . date("m") . " de " . date("Y");
+        $query = "select e.nombre, e.apellidos, e.cedula, c.nombre as cNombre, c.sigla as cSigla, p.nombre as pNombre, p.apellidos as pApellidos, cp.horario, ci.ciclo, ci.year
+                  FROM matriculas as m
+                  JOIN estudiantes as e ON (m.id_estudiante = e.id and e.id=$id)
+                  JOIN cur_profs AS cp ON (m.id_curProf = cp.id)
+                  JOIN cursos as c on (c.id = cp.id_curso)
+                  JOIN profesors as p ON (cp.id_prof = p.id)
+                  JOIN ciclos as ci on (m.id_ciclo=ci.id and ci.habilitado=1)";
+        $matricula = DB::select($query);
+        $pdf = \PDF::loadView('matricula/informeMatriculaPDF',['matricula' => $matricula],['fecha' => $fech_Actual]);
+        return $pdf->stream('HistoricoDePagos.pdf');
+    }
 
-
+    public function buscaEstudianteInformeMatricula()
+    {
+        return view('matricula.buscaEstudInformeMatriculaPDF');
+    }
 
 
 

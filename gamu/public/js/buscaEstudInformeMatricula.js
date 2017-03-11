@@ -7,7 +7,7 @@ $(document).ready(function(){
 			table.append("<tr><td>"+value.nombre+" "+value.apellidos+
 				"</td><td>"+value.cedula+"</td><td>"+value.telefono+
 				"</td><td>"+value.nombre_padre1+" "+value.tel_padre1+
-				"</td><td><a href='/registarNotas/"+value.id+"' class='btn btn-warning'>Registar Notas</a></td></tr>");
+				"</td><td><a href='/informeMatricula/"+value.id+"' class='btn btn-warning'>Generar Informe</a></td></tr>");
 		});
 	});
 });
@@ -24,10 +24,7 @@ $("#btnBuscar").click(function(){
 			table.append("<tr><td>"+value.nombre+" "+value.apellidos+
 				"</td><td>"+value.cedula+"</td><td>"+value.telefono+
 				"</td><td>"+value.nombre_padre1+" "+value.tel_padre1+
-				"</td><td><a href='/registarNotas/"+value.id+"' class='btn btn-warning'>Registar Notas</a></td></tr>");
+				"</td><td><a href='/informeMatricula/"+value.id+"' class='btn btn-warning'>Generar Informe</a></td></tr>");
 		});
 	});
 });
-
-
-

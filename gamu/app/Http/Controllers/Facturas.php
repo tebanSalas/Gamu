@@ -123,4 +123,20 @@ class Facturas extends Controller
     {
         //
     }
+
+    public function historicoPagos($id)
+    {
+        $fech_Actual = "Informe emitido el: " . date("d") . " del " . date("m") . " de " . date("Y");
+        $query = "select f.fecha_pago, f.recibo_banco, f.mes_cobro, e.nombre, e.apellidos, e.cedula
+                   FROM facturas as f
+                   JOIN estudiantes as e ON (f.id_estudiante = e.id and e.id=$id)";
+        $pago = DB::select($query);
+        $pdf = \PDF::loadView('pagos/pagosEstudiante',['pago' => $pago],['fecha' => $fech_Actual]);
+        return $pdf->stream('HistoricoDePagos.pdf');
+    }
+
+    public function buscaEstudianteHistorico()
+    {
+        return view('pagos.buscaEstudianteHistorico');
+    }
 }

@@ -69,7 +69,7 @@
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Pago <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="../../../facturas"><i class="fa fa-usd" aria-hidden="true"></i> Registrar Pagos</a></li>
-                        <li><a href=""><i class="fa fa-money" aria-hidden="true"></i> Pagos Estudiante</a></li>
+                        <li><a href="../../../buscaEstudianteHistorico"><i class="fa fa-money" aria-hidden="true"></i> Pagos Estudiante</a></li>
                         <li><a href=""><i class="fa fa-bar-chart" aria-hidden="true"></i> Morosos</a></li>
                     </ul>
                 </li>                    

@@ -125,5 +125,5 @@ Route::get('/getInstrumento/{id}', 'Instrumentos@getInstrumento');
 Route::post('/desvincular', 'Instrumentos@desvincular');
 
 Route::get('error', function(){
-	abort(500);
+	abort(512);
 });

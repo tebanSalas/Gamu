@@ -126,14 +126,6 @@ class Profesors extends Controller
         }
     }
 
-    public function listadoProfesores()
-    {
-        $fech_Actual = "Informe emitido el: " . date("d") . " del " . date("m") . " de " . date("Y");
-        $profesores = Profesor::all();
-        $pdf = \PDF::loadView('profesores/listadoProfesores',['profesores' => $profesores],['fecha' => $fech_Actual]);
-        return $pdf->stream('profesores.pdf');
-    }
-
     public function buscarNombre(Request $request)
     {
         $nombre = $request->nombre;
@@ -150,5 +142,14 @@ class Profesors extends Controller
         $profesores = Profesor::all();
         $pdf = \PDF::loadView('profesores/listadoProfesores',['profesores' => $profesores],['fecha' => $fech_Actual]);
         return $pdf->stream('profesores.pdf');
+    }
+
+//¨*************************REPORTES****************************
+    public function listadoProfesores()
+    {
+        $fech_Actual = "Informe emitido el: " . date("d") . " del " . date("m") . " de " . date("Y");
+        $profesores = DB::select('select * from profesors WHERE profesors.delete = 0');
+        $pdf = \PDF::loadView('profesores/listadoProfesores',['profesores' => $profesores],['fecha' => $fech_Actual]);
+        return $pdf->stream('ListaDeProfesores.pdf');
     }
 }

@@ -31,6 +31,8 @@ class Facturas extends Controller
         
     }
 
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -41,6 +43,7 @@ class Facturas extends Controller
     {
         $numRecibo =  $request->recibo;
         $mesPago = $request->mesPago;
+        $idEstud = $request->idEstud;
 
         $idciclo = DB::select("select id from ciclos WHERE ciclos.habilitado = 1");
         $id_ciclo = 0;
@@ -48,10 +51,10 @@ class Facturas extends Controller
             $id_ciclo = $cic->id;
         }
         $ciclo = Ciclo::find($id_ciclo);
-        $idCiclo = $ciclo->year;
+        $year = $ciclo->year;
         $actualYear = date("Y"); 
 
-        $validaRecibo = DB::select("select * from facturas where (facturas.recibo_banco='$numRecibo' or ($idCiclo=$actualYear and facturas.mes_cobro='$mesPago'))");
+        $validaRecibo = DB::select("select * from facturas where facturas.recibo_banco='$numRecibo'");
         if(empty($validaRecibo)){
             $factura = new Factura();
             $factura->id_estudiante = $request->idEstud;
@@ -59,7 +62,8 @@ class Facturas extends Controller
             $factura->recibo_banco = $numRecibo;
             $factura->mes_cobro = $mesPago;
             if($factura->save()){
-                return back()->with('msj','Excelente! El Pago se ha registrado con éxito.');
+                return $this->historicoPagos($request->idEstud);
+                //return back()->with('msj','Excelente! El Pago se ha registrado con éxito.');
             }else{
                 return back()->with('msj2', "Opa!, algo pasó. Por favor revisa los datos, o intenta mas tarde");
         }
@@ -74,6 +78,8 @@ class Facturas extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //este metodo lo llamo desde  cargarFacturas.js, y me trae los meses del año que ya se han facuturado para luego yo mostrarlos en un text area
     public function show($id)
     {   
         $idciclo = DB::select("select id from ciclos WHERE ciclos.habilitado = 1");
@@ -84,7 +90,7 @@ class Facturas extends Controller
         $ciclo = Ciclo::find($id_ciclo);
         $yearCiclo = $ciclo->year;
         $actualYear = date("Y"); 
-        $queryMeses = DB::select("select facturas.mes_cobro from facturas WHERE facturas.id_estudiante=$id and $yearCiclo=$actualYear" );
+        $queryMeses = DB::select("select facturas.mes_cobro, facturas.recibo_banco from facturas WHERE facturas.id_estudiante=$id and $yearCiclo=$actualYear" );
         return response()->json(
                 $queryMeses
             );
@@ -123,13 +129,13 @@ class Facturas extends Controller
     {
         //
     }
-
+//***************************************REPORTE******************************************
     public function historicoPagos($id)
     {
         $fech_Actual = "Informe emitido el: " . date("d") . " del " . date("m") . " de " . date("Y");
         $query = "select f.fecha_pago, f.recibo_banco, f.mes_cobro, e.nombre, e.apellidos, e.cedula
                    FROM facturas as f
-                   JOIN estudiantes as e ON (f.id_estudiante = e.id and e.id=$id)";
+                   JOIN estudiantes as e ON (f.id_estudiante = e.id and e.id=$id) ORDER BY fecha_pago DESC";
         $pago = DB::select($query);
         $pdf = \PDF::loadView('pagos/pagosEstudiante',['pago' => $pago],['fecha' => $fech_Actual]);
         return $pdf->stream('HistoricoDePagos.pdf');

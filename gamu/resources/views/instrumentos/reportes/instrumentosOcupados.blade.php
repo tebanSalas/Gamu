@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<title>Lista de Estudiantes</title>
+<title>Lista de Instrumentos Ocupados</title>
 	<style>
 		h2 {
 			border-bottom-style: solid;
@@ -49,27 +49,25 @@
 
 <body>
 <h3>Listado de Asignaciones de Instrumentos </h3>
-
-<table class="table table-striped">
-		 		
+@if(!empty($instrumentos))
+<table class="table table-striped"> 		
 	<thead>
 		<tr>
 			<th>Instrumento</th>
-			<th>Estudiante</th>
-			
+			<th>Estudiante</th>			
 	</thead>
 	<tbody>
-
 		@foreach($instrumentos as $instru)
 			<tr>
 				 <td>{{ $instru->inombre }} / Marca:{{ $instru->imarca }} / Serie: {{ $instru->iserie }}</td>
-				 <td>{{ $instru->enombre }} {{ $instru->eapellidos }} / Ced: {{ $instru->eced }}</td>
-				 
+				 <td>{{ $instru->enombre }} {{ $instru->eapellidos }} / Ced: {{ $instru->eced }}</td>				 
 			</tr>	
 		@endforeach
-	</tbody>
-		 		
+	</tbody>	 		
 </table>
+@else
+<label>No se registraron vinculaciones de instrumentos con estudiantes. Intente vinvularlos en la pestaña "Instrumentos", sección de "Prestamo"</label>
+@endif
 </body>
 
 <footer>

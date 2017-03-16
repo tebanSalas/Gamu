@@ -2,10 +2,10 @@ $('#btnPago').click(function(){
 	
 	var idEstud = $("#estudiantes").val();
 	var route = "http://localhost:8000/facturas/"+idEstud+"";
-	var meses="";
+	var meses="Meses pagados, con el número de recibo que se registró.\n";
 	$.get(route, function(res){
 		$(res).each(function(key,value){
-			meses= meses+" "+value.mes_cobro+",";
+			meses= meses+"Mes: "+value.mes_cobro+". "+value.recibo_banco+"\n";
 		});
 		$("#mesesListos").val(meses);
 		$("#idEstud").val(idEstud);
@@ -20,7 +20,7 @@ $('#estudiantes').change(function(){
 	var meses="";
 	$.get(route, function(res){
 		$(res).each(function(key,value){
-			meses= meses+" "+value.mes_cobro+",";
+			meses= meses+"Mes: "+value.mes_cobro+". "+value.recibo_banco+"\n";
 		});
 		$("#mesesListos").val(meses);
 		$("#idEstud").val(idEstud);

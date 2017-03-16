@@ -48,18 +48,15 @@
 
 <body>
 <h3>Cursos, Profesores y Horarios. </h3>
-
-<table class="table table-striped">
-		 		
+@if(!empty($cursos))
+<table class="table table-striped"> 		
 	<thead>
 		<tr>
 			<th>Curso</th>
 			<th>Profesor</th>
 			<th>Horario</th>
-			
 	</thead>
 	<tbody>
-
 		@foreach($cursos as $curso)
 			<tr>
 				 <td>{{ $curso->cNombre }} / Sigla: {{ $curso->cSigla }}</td>
@@ -67,15 +64,15 @@
 				 <td>{{ $curso->horario }} Cupos: {{ $curso->cupo }}</td>
 			</tr>	
 		@endforeach
-	</tbody>
-		 		
+	</tbody> 		
 </table>
+@else
+<label>No se registraron cursos para este ciclo lectivo, intente registrando uno en la pestaña "Cursos" y luego en "Habilitar Cursos".</label>
+@endif
 </body>
-
 <footer>
 	<div >
   		<label>{{ $fecha }}</label>
 	</div>
 </footer>
-
 </html>

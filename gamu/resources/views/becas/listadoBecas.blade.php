@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<title>Lista de Cursos</title>
+<title>Lista de Becas Registradas</title>
 	<style>
 		h2 {
 			border-bottom-style: solid;
@@ -48,32 +48,30 @@
 </head> 
 
 <body>
-<h3>Listado de Cursos</h3>
-
-<table >
-		 		
+<h3>Listado de Becas</h3>
+@if(!empty($becas))
+<table >		
 	<thead>
 		<tr>
 			<th>Nombre</th>
 			<th>Descuento</th>
-			<th>Detalle</th>
-			
+			<th>Detalle</th>	
 	</thead>
 	<tbody>
-
 		@foreach($becas as $beca)
 			@if($beca->delete == 0)	
 			<tr>
 				 <td>{{ $beca->nombre }}</td>
 				 <td>{{ $beca->descuento }}</td>
-				 <td>{{ $beca->detalle }}</td>
-				 
+				 <td>{{ $beca->detalle }}</td> 
 			</tr>
 			@endif	
 		@endforeach
-	</tbody>
-		 		
+	</tbody>	 		
 </table>
+@else
+<label> No se registraron becas en el sistema. Intente insertando una beca en la pesaña "Becas".</label>
+@endif
 </body>
 
 <footer>

@@ -52,7 +52,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="../../../matriculas"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Nueva</a></li>
                         <li><a href="../../../talleres"><i class="fa fa-list-ul" aria-hidden="true"></i> Talleres</a></li>
-                        <li><a href=""><i class="fa fa-line-chart" aria-hidden="true"></i> Reporte</a></li>
+                        <li><a href="../../../listaDeClase"><i class="fa fa-line-chart" aria-hidden="true"></i>Reporte de Matriculas</a></li>
                         <li><a href="../../../ciclos/create"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Habilitar Ciclo Lectivo</a></li>
                     </ul>
                 </li>
@@ -61,7 +61,7 @@
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Académico<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="../../../buscaRegistar"><i class="fa fa-list-alt" aria-hidden="true"></i> Registrar Notas</a></li>
-                        <li><a href=""><i class="fa fa-book" aria-hidden="true"></i> Expediente Académico</a></li>
+                        <li><a href="../../../buscaEstudianteExpedienteAcademico"><i class="fa fa-book" aria-hidden="true"></i> Expediente Académico</a></li>
                     </ul>
                 </li>
 
@@ -80,7 +80,7 @@
                         <li><a href="../../../becas/create"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Nueva Categoria</a></li>
                         <li><a href="../../../becas"><i class="fa fa fa-pencil-square-o" aria-hidden="true"></i> Editar</a></li>
                         <li><a href="../../../AsiganarBecas"><i class="fa fa-link" aria-hidden="true"></i> Asignar Becas</a></li>
-                        <li><a href=""><i class="fa fa-line-chart" aria-hidden="true"></i> Lista de Becados </a></li>
+                        <li><a href="../../../listaBecados"><i class="fa fa-line-chart" aria-hidden="true"></i> Lista de Becados </a></li>
                         <li><a href="/ListaBecasPDF"><i class="fa fa-list" aria-hidden="true"></i> Lista de Becas Registradas </a></li>
                     </ul>
                 </li>

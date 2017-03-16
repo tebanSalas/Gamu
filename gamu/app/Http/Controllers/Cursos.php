@@ -119,14 +119,6 @@ class Cursos extends Controller
             return back()->with('msj2', 'Opa!, algo pasó. Por favor revisa los datos');
         }
     }
-    public function listadoCursos()
-    {
-        $fech_Actual = "Informe emitido el: " . date("d") . " del " . date("m") . " de " . date("Y");
-        $cursos = Curso::all();
-        $pdf = \PDF::loadView('cursos/listadoCursos',['cursos' => $cursos],['fecha' => $fech_Actual]);
-        return $pdf->stream('cursos.pdf');
-    }
-
     public function buscarNombre(Request $request)
     {
         $nombre = $request->nombre;
@@ -137,5 +129,12 @@ class Cursos extends Controller
         return view('cursos.index')->with(['cursos'=>$cursos]);
         
     }
-
+    //********************************REPORTES****************************
+    public function listadoCursos()
+    {
+        $fech_Actual = "Informe emitido el: " . date("d") . " del " . date("m") . " de " . date("Y");
+        $cursos = DB::select('select * from cursos WHERE cursos.delete = 0');
+        $pdf = \PDF::loadView('cursos/listadoCursos',['cursos' => $cursos],['fecha' => $fech_Actual]);
+        return $pdf->stream('ListaDeCursosRegistrados.pdf');
+    }
 }

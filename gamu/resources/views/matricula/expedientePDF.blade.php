@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<title>Historico de Pagos</title>
+<title>Expediente Académico</title>
 	<style>
 		h2 {
 			border-bottom-style: solid;
@@ -12,7 +12,14 @@
 		div{
 			margin: 10px 0px 10px 50px;
 		}
-		
+		label{
+			font: arial;
+			font-size: 16px;
+
+		}
+		#b{
+			font-weight: bold;
+		}
 		h3{
 			color: #384452;
     		text-align: center;
@@ -46,34 +53,35 @@
 <h2>Sistema de Escuelas de Música de Paraíso</h2>
 </head> 
 <body>
-@if(!empty($pago))
-@foreach($pago as $p)
-	@if($loop->last)	
-		<h3>Historico de pagos del estudiante {{ $p->nombre }} {{ $p->apellidos }} Ced.{{ $p->cedula }}</h3>
-	@endif		
-@endforeach
-<table >	 		
-	<thead>
-		<tr>
-			<th>Mes Pagado</th>
-			<th>Fecha Pago (aaaa-mm-dd)</th>
-			<th>Núm. Recibo</th>
-	</thead>
-	<tbody>
-		@foreach($pago as $p)	
-			<tr>
-				 <td>{{ $p->mes_cobro }} </td>
-				 <td>{{ $p->fecha_pago }}</td>
-				 <td>{{ $p->recibo_banco }}</td>
-			</tr>
+<h3>Expediente académico del estudiante {{ $estudiante->nombre }} {{ $estudiante->apellidos }} Ced.{{ $estudiante->cedula }}.</h3>
+@if(!empty($matricula))
+		@foreach($ciclos as $c)
+		<label id="b">{{ $c->ciclo }} del {{ $c->year }}</label>
+				<table >	 		
+					<thead>
+						<tr>
+							<th>Curso</th>
+							<th>Profesor</th>
+							<th>Nota</th>
+						</tr>
+					</thead>
+			@foreach($matricula as $m)
+				@if($c->id == $m->id_ciclo)	
+					<tbody>
+						<tr>
+				 			<td>{{ $m->cSigla }} / {{ $m->cNombre }}</td>
+				 			<td>{{ $m->pNombre }} {{ $m->pApellidos }}</td>
+				 			<td>{{ $m->nota }}</td>
+						</tr>	
+				@endif
+			@endforeach
+				</tbody>	 		
+				</table>
 		@endforeach
-	</tbody>		
-</table>
 @else
-	<label id="b">No se registraron pagos en el presente año.</label>
+	<label id="b">No se registraron cursos matriculados</label>
 @endif
 </body>
-
 <footer>
 	<div >
   		<label>{{ $fecha }}</label>

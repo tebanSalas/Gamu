@@ -82,7 +82,10 @@ Route::get('/historicoPagos/{id}', 'Facturas@historicoPagos');
 Route::get('/buscaEstudianteHistorico', 'Facturas@buscaEstudianteHistorico');
 Route::get('/informeMatricula/{id}', 'Matriculas@informeMatricula');
 Route::get('/buscaEstudianteInformeMatricula', 'Matriculas@buscaEstudianteInformeMatricula');
-
+Route::get('/buscaEstudianteExpedienteAcademico', 'Matriculas@buscaEstudianteExpedienteAcademico');
+Route::get('/expediente/{id}', 'Matriculas@expediente');
+Route::get('/listaDeClase', 'Matriculas@listaDeClase');
+Route::get('/listaBecados', 'Becas@listaBecados');
 
 //Asiganar Beca
 Route::get('/AsiganarBecas', 'Becas@asignar'); 
@@ -120,3 +123,7 @@ Route::get('/devolucion', 'Instrumentos@devolucion');
 Route::get('/getPrestamo/{id}', 'Instrumentos@getPrestamo');
 Route::get('/getInstrumento/{id}', 'Instrumentos@getInstrumento');
 Route::post('/desvincular', 'Instrumentos@desvincular');
+
+Route::get('error', function(){
+	abort(500);
+});

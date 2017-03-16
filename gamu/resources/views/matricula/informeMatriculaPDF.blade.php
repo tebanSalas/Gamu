@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<title>Lista de Cursos</title>
+<title>Informe Matrícula</title>
 	<style>
 		h2 {
 			border-bottom-style: solid;
@@ -44,19 +44,15 @@
 	</style>
 
 <h2>Sistema de Escuelas de Música de Paraíso</h2>
-
 </head> 
-
+@if(!empty($matricula))
 <body>
 @foreach($matricula as $m)
 	@if($loop->first)	
 		<h3>Informe de matricula del estudiante {{ $m->nombre }} {{ $m->apellidos }} Ced.{{ $m->cedula }}. Para el ciclo {{ $m->ciclo }} del {{ $m->year }}</h3>
 	@endif		
 @endforeach
-
-
-<table >
-		 		
+<table > 		
 	<thead>
 		<tr>
 			<th>Curso</th>
@@ -64,7 +60,6 @@
 			<th>Horario</th>
 	</thead>
 	<tbody>
-
 		@foreach($matricula as $m)	
 			<tr>
 				 <td>{{ $m->cSigla }} / {{ $m->cNombre }}</td>
@@ -72,15 +67,15 @@
 				 <td>{{ $m->horario }}</td>
 			</tr>
 		@endforeach
-	</tbody>
-		 		
+	</tbody> 		
 </table>
+@else
+	<label id="b">No se registraron matriculas</label>
+@endif
 </body>
-
 <footer>
 	<div >
   		<label>{{ $fecha }}</label>
 	</div>
 </footer>
-
 </html>

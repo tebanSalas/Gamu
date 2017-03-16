@@ -10,13 +10,9 @@ use gamu\Beca;
 
 class Estudiantes extends Controller
 {
-
     public function __construct(){
         $this->middleware('auth');
     }
-
-
-
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +22,6 @@ class Estudiantes extends Controller
     {
 
         $estudiantes = Estudiante::SELECT ('*')->FROM ('estudiantes')-> WHERE ('estudiantes.delete','=','0')->get();
-        //$estudiantes = Estudiante::paginate(10);
         return view('estudiantes.index')->with(['estud'=>$estudiantes]);
     }
 
@@ -113,8 +108,6 @@ class Estudiantes extends Controller
     {
         $estudiante = Estudiante::find($id);
         $estudiante->fill($request->all());
-      
-        
         if($estudiante->update()){
             return redirect('/estudiantes')->with('msj','Excelente! Los datos han sido modificados con éxito.');
         }else{
@@ -130,11 +123,9 @@ class Estudiantes extends Controller
      */
     public function destroy($id)
     {
-        
         $estudiante = Estudiante::find($id);
         $estudiante->delete = 1;
-      
-        
+             
         if($estudiante->update()){
             return redirect('/estudiantes')->with('msj','Excelente! Los datos han sido eliminados');
         }else{
@@ -142,14 +133,6 @@ class Estudiantes extends Controller
         }
         
     } 
-
-    public function listadoEstudiantes()
-    {
-        $fech_Actual = "Informe emitido el: " . date("d") . " del " . date("m") . " de " . date("Y");
-        $estudiantes = Estudiante::all();
-        $pdf = \PDF::loadView('estudiantes/listadoEstudiantes',['estud' => $estudiantes],['fecha' => $fech_Actual]);
-        return $pdf->stream('archivo.pdf');
-    }
 
     public function buscarNombre(Request $request)
     {
@@ -159,11 +142,6 @@ class Estudiantes extends Controller
         $consulta = $con . $sulta;
         $estudiantes = DB::select($consulta);
         return view('estudiantes.index')->with(['estud'=>$estudiantes]);
-
-
-        // esto hay que mejorarlo para que no quede hecho a la fuerza, lo que hice es concatenar el parametro que viene con el resto de la consulta, porque no me queria funcionar... entonces meto todoa la consulta en una sola variable y la mando a ejecutar para que traiga lo que se le pide   
-        //DB::select('select * from estudiantes WHERE estudiantes.id = 1', [$al]);
-        //Estudiante::SELECT('*')-> FROM ('estudiantes')-> WHERE ('estudiantes.nombre', 'LIKE', '"%',$al,'%"')->get();
     }
 
     public function buscar($nombre)
@@ -217,6 +195,14 @@ class Estudiantes extends Controller
                 $estudiantes
             );
         
+    }
+    //*************************REPORTE************************************
+    public function listadoEstudiantes()
+    {
+        $fech_Actual = "Informe emitido el: " . date("d") . " del " . date("m") . " de " . date("Y");
+        $estudiantes = Estudiante::all();
+        $pdf = \PDF::loadView('estudiantes/listadoEstudiantes',['estud' => $estudiantes],['fecha' => $fech_Actual]);
+        return $pdf->stream('ListaEstudiantesActivos.pdf');
     }
  
 } 

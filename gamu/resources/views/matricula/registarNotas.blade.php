@@ -20,7 +20,7 @@
             
 				@foreach ($matriculas as $matri)
 					@foreach ($cursos as $cur)
-						@if($matri->id_curProf == $cur->id)
+						@if($matri->id_curProf == $cur->id && $matri->id_ciclo == $ciclo->id)
 						<div class="panel-group">
 						<div class="panel panel-default">
 							<div class="panel-heading">Curso</div>

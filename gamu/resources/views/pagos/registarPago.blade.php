@@ -82,14 +82,14 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label class="control-label col-sm-2" for="recibo">Meses Pagados</label>
+                      <label class="control-label col-sm-2" for="recibo">Meses Pagados (Por Año)</label>
                       <div class="col-sm-10">
-                        <textarea type="text" id="mesesListos" name="MesesListo" class="form-control" readonly></textarea> 
+                        <textarea type="text" id="mesesListos"  rows="5" name="MesesListo" class="form-control" readonly></textarea> 
                        </div>
                     </div>
                     <div class="form-group"> 
-                    <div class="col-sm-offset-10 col-sm-2">
-                      <button type="submit" class="btn btn-theme">Guardar</button>
+                    <div class="col-sm-offset-8 col-sm-4">
+                      <button type="submit" class="btn btn-theme">Guardar e imprimir comprobante</button>
                     </div>
                   </div>
                   </form>

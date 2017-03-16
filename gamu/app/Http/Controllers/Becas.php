@@ -121,14 +121,7 @@ class Becas extends Controller
             return back()->with('msj2', 'Opa!, algo pasó. Por favor revisa los datos');
         }       
     }
-    public function listadoBecas()
-    {
-        $fech_Actual = "Informe emitido el: " . date("d") . " del " . date("m") . " de " . date("Y");
-        $becas = Beca::all();
-        $pdf = \PDF::loadView('becas/listadoBecas',['becas' => $becas],['fecha' => $fech_Actual]);
-        return $pdf->stream('becas.pdf'); 
-    }
-
+    
     public function buscarNombre(Request $request)
     {
         $nombre = $request->nombre;
@@ -158,6 +151,25 @@ class Becas extends Controller
         }else{
             return back()->with('msj2', 'Opa!, algo pasó. Por favor revisa los datos');
         }
-        
+    }
+
+//******************************REPORTES*********************
+    public function listaBecados()
+    {
+        $fech_Actual = "Informe emitido el: " . date("d") . " del " . date("m") . " de " . date("Y");
+        $query="select e.nombre, e.apellidos, e.cedula, b.nombre AS beca, b.descuento
+                FROM estudiantes AS e 
+                JOIN becas AS b ON (e.id_beca = b.id)  
+                ORDER BY beca  ASC";
+        $becados = DB::select($query);
+        $pdf = \PDF::loadView('becas/listaBecados',['becados' => $becados],['fecha' => $fech_Actual]);
+        return $pdf->stream('ListaEstudiantesBecados.pdf'); 
+    }
+    public function listadoBecas()
+    {
+        $fech_Actual = "Informe emitido el: " . date("d") . " del " . date("m") . " de " . date("Y");
+        $becas = DB::select('select * from becas WHERE becas.delete = 0');
+        $pdf = \PDF::loadView('becas/listadoBecas',['becas' => $becas],['fecha' => $fech_Actual]);
+        return $pdf->stream('ListaBecasDisponibles.pdf'); 
     }
 } 

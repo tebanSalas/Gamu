@@ -49,9 +49,8 @@
 
 <body>
 <h3>Listado de Estudiantes</h3>
-
-<table class="table table-striped">
-		 		
+@if(!empty($estud))
+<table class="table table-striped"> 		
 	<thead>
 		<tr>
 			<th>Nombre</th>
@@ -61,7 +60,6 @@
 			<th>Padre</th>
 	</thead>
 	<tbody>
-
 		@foreach($estud as $estu)
 			@if($estu->delete == 0)	
 			<tr>
@@ -74,15 +72,15 @@
 			</tr>
 			@endif	
 		@endforeach
-	</tbody>
-		 		
+	</tbody>	 		
 </table>
+@else
+<label>No se registraron estudiantes, intente registar uno en la pestaña "Personas", luego "Estudiantes" y finalmente en "Crear"</label>
+@endif
 </body>
-
 <footer>
 	<div >
   		<label>{{ $fecha }}</label>
 	</div>
 </footer>
-
 </html>

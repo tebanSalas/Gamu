@@ -191,11 +191,6 @@ class Instrumentos extends Controller
         
         
     }
-
-    public function reportesIntrumentos(){
-        return view('instrumentos.seleccionReporte');
-    }
-
     //*****************************DEVOLUCION******************************
 
     public function devolucion()
@@ -261,7 +256,7 @@ class Instrumentos extends Controller
         $fech_Actual = "Informe emitido el: " . date("d") . " del " . date("m") . " de " . date("Y");
         $instrumentos = DB::select('select * from instrumentos WHERE instrumentos.delete = 0 and instrumentos.disponibilidad = "Disponible"');
         $pdf = \PDF::loadView('instrumentos/reportes/inventario',['instrumentos' => $instrumentos],['fecha' => $fech_Actual]);
-        return $pdf->stream('InventarioInstrumentos.pdf');
+        return $pdf->stream('InstrumentosDisponibles.pdf');
     }
     public function instrumentosOcupadosPDF()
     {
@@ -272,6 +267,9 @@ class Instrumentos extends Controller
             JOIN estudiantes as e ON (p.id_estudiante = e.id)";
         $instrumentos = DB::select($query);
         $pdf = \PDF::loadView('instrumentos/reportes/instrumentosOcupados',['instrumentos' => $instrumentos],['fecha' => $fech_Actual]);
-        return $pdf->stream('InventarioInstrumentos.pdf');
+        return $pdf->stream('InstrumentosOcupadosyQuienLoTiene.pdf');
+    }
+    public function reportesIntrumentos(){
+        return view('instrumentos.seleccionReporte');
     }
 }

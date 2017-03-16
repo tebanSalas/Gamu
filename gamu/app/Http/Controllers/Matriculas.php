@@ -168,6 +168,7 @@ class Matriculas extends Controller
         } 
     }
 
+    //matricula de talleres aparte
     public function talleres()
     {
       
@@ -240,8 +241,11 @@ class Matriculas extends Controller
             return back()->with('msj2', 'Opa!, algo pasó. Por favor reintente más tarde');
         }
     }
-//*********************** REPORTE DE MATRICULAS *************************************
-
+//*********************** REPORTES DE MATRICULAS *************************************
+    public function buscaEstudianteInformeMatricula()
+    {
+        return view('matricula.buscaEstudInformeMatriculaPDF');
+    }
     public function informeMatricula($id)
     {
         $fech_Actual = "Informe emitido el: " . date("d") . " del " . date("m") . " de " . date("Y");
@@ -257,11 +261,48 @@ class Matriculas extends Controller
         return $pdf->stream('HistoricoDePagos.pdf');
     }
 
-    public function buscaEstudianteInformeMatricula()
+
+    public function buscaEstudianteExpedienteAcademico()
     {
-        return view('matricula.buscaEstudInformeMatriculaPDF');
+        return view('matricula.buscaEstudExpedientePDF');
+    }
+    public function expediente($id)
+    {
+        $estudiante = Estudiante::find($id);
+        $ciclos = Ciclo::all();
+        $fech_Actual = "Informe emitido el: " . date("d") . " del " . date("m") . " de " . date("Y");
+        $query = "select c.nombre as cNombre, c.sigla as cSigla, p.nombre as pNombre, p.apellidos as pApellidos, cp.horario, m.nota, m.id_ciclo
+                  FROM matriculas as m
+                  JOIN estudiantes as e ON (m.id_estudiante = e.id and e.id=$id)
+                  JOIN cur_profs AS cp ON (m.id_curProf = cp.id)
+                  JOIN cursos as c on (c.id = cp.id_curso)
+                  JOIN profesors as p ON (cp.id_prof = p.id)";
+        $matricula = DB::select($query);
+        $pdf = \PDF::loadView('matricula/expedientePDF',['estudiante' => $estudiante, 'matricula' => $matricula, 'ciclos' => $ciclos, 'fecha' => $fech_Actual]);
+        return $pdf->stream('HistoricoDePagos.pdf');
     }
 
+
+    public function listaDeClase()
+    {
+        $fech_Actual = "Informe emitido el: " . date("d") . " del " . date("m") . " de " . date("Y");
+
+        $queryCursos="select c.nombre AS nameCurso, c.sigla, p.nombre AS nameProf, p.apellidos AS apellidosProf, cp.id
+                      FROM cursos as c
+                      JOIN cur_profs AS cp ON (cp.id_curso=c.id) 
+                      JOIN profesors AS p ON(cp.id_prof=p.id)
+                      JOIN ciclos as ci ON (cp.id_ciclo = ci.id AND ci.habilitado =1)";
+        $cursos = DB::select($queryCursos);
+
+        $queryMatriculas="select e.nombre,e.apellidos,e.cedula, m.id_curProf, e.telefono
+                           FROM estudiantes AS e
+                           JOIN matriculas as m ON (m.id_estudiante = e.id)
+                           JOIN ciclos as ci ON (m.id_ciclo = ci.id AND ci.habilitado =1)";
+        $matriculas = DB::select($queryMatriculas);
+
+        $pdf = \PDF::loadView('matricula/hojasClase',['cursos' => $cursos, 'matriculas' => $matriculas, 'fecha' => $fech_Actual]);
+        return $pdf->stream('ListasDeClase.pdf');
+    }
 
 
 

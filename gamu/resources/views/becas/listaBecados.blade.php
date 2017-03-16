@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<title>Lista de Profesores</title>
+<title>Lista de Estudiantes Becados</title>
 	<style>
 		h2 {
 			border-bottom-style: solid;
@@ -12,7 +12,14 @@
 		div{
 			margin: 10px 0px 10px 50px;
 		}
-		
+		label{
+			font: arial;
+			font-size: 16px;
+
+		}
+		#b{
+			font-weight: bold;
+		}
 		h3{
 			color: #384452;
     		text-align: center;
@@ -27,6 +34,8 @@
 		table {
     		border-collapse: collapse;
     		width: 100%;
+    		margin-bottom: 50px;
+
 		}
 
 		th{
@@ -44,40 +53,40 @@
 	</style>
 
 <h2>Sistema de Escuelas de Música de Paraíso</h2>
+
 </head> 
+
 <body>
-<h3>Listado de Profesores</h3>
-@if(!empty($profesores))
-<table class="table table-striped"> 		
+	
+<h3>Lista de estudiantes becados</h3>
+
+@if(!empty($becados))
+	<table >	
 	<thead>
 		<tr>
-			<th>Nombre</th>
-			<th>Cédula</th>
-			<th>Teléfono</th>
-			<th>Especialidad</th>
-			<th>Sueldo</th>
+			<th>Estudiante</th>
+			<th>Beca Asignada</th>		
 	</thead>
 	<tbody>
-		@foreach($profesores as $prof)
-			@if($prof->delete == 0)	
+		@foreach($becados as $beca)	
 			<tr>
-				 <td>{{ $prof->nombre }} {{ $prof->apellidos }}</td>
-				 <td>{{ $prof->cedula }}</td>
-				 <td>{{ $prof->fecha_nacimiento }}</td>
-				 <td>{{ $prof->especialidad }}</td>
-				 <td>{{ $prof->sueldo }}</td>
+				 <td>{{ $beca->nombre }} {{ $beca->apellidos }}. ced: {{ $beca->cedula }}</td>
+				 <td>{{ $beca->beca }} Descuento: {{ $beca->descuento }}%</td>
+				 		 
 			</tr>
-			@endif	
 		@endforeach
-	</tbody>	 		
-</table>
+	</tbody>
+		 		
+</table>	
 @else
-	<label id="b">No se registraron profesores, intente en la pestaña "Personas", en la sección "Profesores", finalmente la opción "Crear."</label>
+	<label id="b">No se registraron estudiantes con beca</label>
 @endif
+
 </body>
 <footer>
 	<div >
-  		<label>{{ $fecha }}</label>
+		<label>{{ $fecha }}</label>
 	</div>
 </footer>
+
 </html>

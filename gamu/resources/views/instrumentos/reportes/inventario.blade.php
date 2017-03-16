@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<title>Lista de Estudiantes</title>
+<title>Invetario de instrumentos</title>
 	<style>
 		h2 {
 			border-bottom-style: solid;
@@ -49,9 +49,8 @@
 
 <body>
 <h3>Inventario de Instrumentos</h3>
-
-<table class="table table-striped">
-		 		
+@if(!empty($instrumentos))
+<table class="table table-striped">	
 	<thead>
 		<tr>
 			<th>Nombre</th>
@@ -62,7 +61,6 @@
 			<th>Disponibilidad</th>
 	</thead>
 	<tbody>
-
 		@foreach($instrumentos as $instru)
 			<tr>
 				 <td>{{ $instru->nombre }} </td>
@@ -73,11 +71,12 @@
 				 <td>{{ $instru->disponibilidad }}</td>
 			</tr>	
 		@endforeach
-	</tbody>
-		 		
+	</tbody>	
 </table>
+@else
+<label>No se registraron instrumentos.</label>
+@endif
 </body>
-
 <footer>
 	<div >
   		<label>{{ $fecha }}</label>

@@ -49,9 +49,8 @@
 
 <body>
 <h3>Listado de Cursos</h3>
-
-<table >
-		 		
+@if(!empty($cursos))
+<table >		
 	<thead>
 		<tr>
 			<th>Nombre</th>
@@ -60,7 +59,6 @@
 		</tr>
 	</thead>
 	<tbody>
-
 		@foreach($cursos as $curso)
 			@if($curso->delete == 0)	
 			<tr>
@@ -70,11 +68,12 @@
 			</tr>
 			@endif	
 		@endforeach
-	</tbody>
-		 		
+	</tbody>		
 </table>
+@else
+<label>No se registraron cursos, intente registrando uno en la pestaña "Cursos".</label>
+@endif
 </body>
-
 <footer>
 	<div >
   		<label>{{ $fecha }}</label>

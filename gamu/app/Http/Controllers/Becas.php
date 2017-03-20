@@ -20,7 +20,8 @@ class Becas extends Controller
      */
     public function index()
     {
-        $becas = DB::select('select * from becas WHERE becas.delete = 0');
+        //$becas = DB::select('select * from becas WHERE becas.delete = 0');
+        $becas = Beca::where('delete','=',0)->paginate(10);
         return view('becas.index')->with(['becas'=>$becas]);
     }
 
@@ -134,7 +135,7 @@ class Becas extends Controller
 
     public function asignar()
     {
-      $becas = DB::select('select * from becas WHERE becas.delete = 0');
+      $becas = Beca::where('delete','=',0)->get();
       $estud = DB::select('select * from estudiantes WHERE estudiantes.delete = 0');
       return view('becas.asignarBeca')->with(['becas'=>$becas, 'estud'=>$estud]);  
       

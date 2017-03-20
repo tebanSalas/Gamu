@@ -16,13 +16,13 @@
  		{{ csrf_field() }}
 
  		<div class="form-group">
-		<div class="col-md-3" >
+		<div class="col-xs-3" >
   			<label class="control-label col-sm-12" for="nombre">Buscar Estudiantes</label>
    		</div>
-  		<div class="col-md-6" >
-  			<input type="text" class="form-control col-md-12" name="nombre" placeholder="Ingrese un nombre" >
+  		<div class="col-xs-6" >
+  			<input type="text" class="form-control col-xs-12" name="nombre" placeholder="Ingrese un nombre" >
   		</div>
-  		<div class="col-md-2" >
+  		<div class="col-xs-2" >
   			<input type="submit" class="btn btn-success " value="Buscar">
    		</div>  
    		</div>  

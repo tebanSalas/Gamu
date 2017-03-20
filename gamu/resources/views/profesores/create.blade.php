@@ -22,7 +22,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="nombre">Nombre:</label>
                     <div class="col-sm-10">
-                     <input type="text" class="form-control" name="nombre" placeholder="Ingrese el Nombre" required>
+                     <input type="text" class="form-control" name="nombre" placeholder="Ingrese el Nombre" maxlength="60" required>
             <!-- validación de nombre -->       
                        @if ($errors->has('nombre'))
                         <span class="help-block">
@@ -36,7 +36,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="apellidos">Apellidos:</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="apellidos" placeholder="Ahora los apellidos" required>
+                      <input type="text" class="form-control" name="apellidos" placeholder="Ahora los apellidos" maxlength="60" required>
             <!-- validación de apellidos -->       
                        @if ($errors->has('apellidos'))
                         <span class="help-block">
@@ -50,7 +50,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="cedula">Cédula:</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="cedula" placeholder="El número de cédula" required>
+                      <input type="text" class="form-control" name="cedula" placeholder="El número de cédula" maxlength=10" required>
             <!-- validación de cedula -->       
                        @if ($errors->has('cedula'))
                         <span class="help-block">
@@ -78,7 +78,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="telefono">Teléfono:</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="telefono" placeholder="Ingrese un número telefonico donde se pueda localizar" required>
+                      <input type="number" class="form-control" name="telefono" placeholder="Ingrese un número telefonico donde se pueda localizar" min="0" max="1000000000" required>
             <!-- validación detelefonoa -->       
                        @if ($errors->has('telefono'))
                         <span class="help-block">
@@ -105,7 +105,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="especialidad">Especialidad:</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="especialidad" placeholder="¿Cuál es la especialidad?" required>
+                      <input type="text" class="form-control" name="especialidad" placeholder="¿Cuál es la especialidad?" maxlength="60" required>
             <!-- validación detelefonoa -->       
                        @if ($errors->has('especialidad'))
                         <span class="help-block">

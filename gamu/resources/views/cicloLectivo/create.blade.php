@@ -21,8 +21,8 @@
 
 <!-- ciclo -->
                   <div class="form-group">
-                    <label class="control-label col-sm-2" for="ciclo">Ciclo Lectivo:</label>
-                      <div class="dropdown col-sm-10">
+                    <label class="control-label col-xs-2" for="ciclo">Ciclo Lectivo:</label>
+                      <div class="dropdown col-xs-10">
                         <select class="btn btn-default " name="ciclo" placeholder="Seleccione un año">
                           <option value="I Ciclo">I ciclo</option>
                           <option value="II Ciclo">II ciclo</option>
@@ -33,8 +33,8 @@
 
 <!-- año -->
                   <div class="form-group">
-                    <label class="control-label col-sm-2" for="year">Año:</label>
-                      <div class="dropdown col-sm-10">
+                    <label class="control-label col-xs-2" for="year">Año:</label>
+                      <div class="dropdown col-xs-10">
                       <select class="btn btn-default " name="year" placeholder="Seleccione un año">
                         @for ($i = 2012; $i < 2050; $i++)
                           <option value="{{ $i }}">{{ $i }}</option>
@@ -48,7 +48,7 @@
 
 <!-- boton -->
                   <div class="form-group"> 
-                    <div class="col-sm-offset-2 col-sm-10">
+                    <div class="col-xs-offset-2 col-xs-10">
                       <button type="submit" class="btn btn-theme">Habilitar</button>
                     </div>
                   </div>
@@ -62,3 +62,5 @@
  
 
  @endsection
+
+

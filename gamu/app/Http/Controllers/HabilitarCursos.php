@@ -24,9 +24,13 @@ class HabilitarCursos extends Controller
      */
     public function index()
     {
-        $profes = DB::select('select * from profesors WHERE profesors.delete = 0');
-        $curso = DB::select('select * from cursos WHERE cursos.delete = 0');
-        $ciclo = DB::select('select * from ciclos WHERE ciclos.habilitado = 1');
+        //$profes = DB::select('select * from profesors WHERE profesors.delete = 0');
+        //$curso = DB::select('select * from cursos WHERE cursos.delete = 0');
+        //$ciclo = DB::select('select * from ciclos WHERE ciclos.habilitado = 1');
+
+        $curso = Curso::where('delete','=',0)->get();
+        $ciclo = Ciclo::where('habilitado','=',1)->get();
+        $profes = Profesor::where('delete','=',0)->get();
         return view('cursos.habilitar')->with(['profes'=>$profes, 'curso'=>$curso, 'ciclo'=>$ciclo]);
     }
 

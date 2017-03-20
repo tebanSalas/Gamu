@@ -20,7 +20,8 @@ class Profesors extends Controller
      */
     public function index()
     {
-        $profesores = DB::select('select * from profesors WHERE profesors.delete = 0');
+        //$profesores = DB::select('select * from profesors WHERE profesors.delete = 0');
+        $profesores = Profesor::where('delete','=',0)->paginate(10);
         return view('profesores.index')->with(['profes'=>$profesores]);
     }
 

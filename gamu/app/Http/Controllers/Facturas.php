@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use gamu\Http\Requests;
 use gamu\Ciclo;
 use gamu\Factura;
+use gamu\Estudiante;
 
 class Facturas extends Controller
 {
@@ -17,7 +18,8 @@ class Facturas extends Controller
      */
     public function index()
     {
-        $estud = DB::select('select * from estudiantes WHERE estudiantes.delete = 0');
+        $estud = DB::select('select * from estudiantes WHERE estudiantes.delete = 0 ORDER BY estudiantes.nombre ASC');
+        //$estud = Estudiante::where('delete','=',0)->get();
         return view('pagos.registarPago')->with(['estud'=>$estud]);
     }
 
@@ -82,7 +84,7 @@ class Facturas extends Controller
     //este metodo lo llamo desde  cargarFacturas.js, y me trae los meses del año que ya se han facuturado para luego yo mostrarlos en un text area
     public function show($id)
     {   
-        $idciclo = DB::select("select id from ciclos WHERE ciclos.habilitado = 1");
+        $idciclo = Ciclo::where('habilitado','=',1)->get();
         $id_ciclo = 0;
         foreach ($idciclo as $cic) {
             $id_ciclo = $cic->id;

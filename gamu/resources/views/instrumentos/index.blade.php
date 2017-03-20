@@ -61,6 +61,7 @@
 			 		</tbody>
 		 		@endif
  			</table>
+ 			{{ $instrumentos->links() }}
         </div>
     </div>
 </div>

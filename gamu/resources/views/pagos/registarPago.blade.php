@@ -52,7 +52,7 @@
                     <div class="form-group">
                       <label class="control-label col-sm-2" for="recibo">Recibo.</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="recibo" name="recibo" placeholder="Ingrese el número del comprobante de pago" required>
+                        <input type="text" class="form-control" id="recibo" name="recibo" placeholder="Ingrese el número del comprobante de pago" maxlength="60" required>
                         <!-- validación de nombre -->       
                           @if ($errors->has('nombre'))
                             <span class="help-block">

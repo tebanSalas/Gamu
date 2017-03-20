@@ -19,7 +19,7 @@ class Cursos extends Controller
      */
     public function index()
     {
-        $cursos = Curso::where('delete','=',0)->paginate(15);       
+        $cursos = Curso::where('delete','=',0)->paginate(10);       
         //$cursos = DB::select('select * from cursos WHERE cursos.delete = 0');
         return view('cursos.index')->with(['cursos'=>$cursos]);
     }

@@ -21,7 +21,8 @@ class Estudiantes extends Controller
     public function index()
     {
 
-        $estudiantes = Estudiante::SELECT ('*')->FROM ('estudiantes')-> WHERE ('estudiantes.delete','=','0')->get();
+        //$estudiantes = Estudiante::SELECT ('*')->FROM ('estudiantes')-> WHERE ('estudiantes.delete','=','0')->get();
+        $estudiantes = Estudiante::where('delete','=',0)->paginate(15);
         return view('estudiantes.index')->with(['estud'=>$estudiantes]);
     }
 

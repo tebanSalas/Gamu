@@ -58,7 +58,7 @@
              	<form class="form-horizontal" role="form" method="POST" action="{{ url('/validaRecibo') }}">
              	  {{ csrf_field() }}
              	  <input type="hidden" name="idEstud" id="idEstud">
-                  <input type="text" class="form-control" name="comprobante" id="comprobante" placeholder="Número de recibo">
+                  <input type="text" class="form-control" name="comprobante" id="comprobante" placeholder="Número de recibo" maxlength="60">
               </div>
               <div class="modal-footer">
                 <input type="submit" name="btnValidarRecibo" id="btnValidarRecibo" value="Continuar" class="btn btn-success"  >

@@ -21,9 +21,9 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/becas') }}">
                     	{{ csrf_field() }}
   						<div class="form-group">
-    						<label class="control-label col-sm-2" for="nombre">Nombre:</label>
-    						<div class="col-sm-10">
-      							<input type="text" class="form-control" name="nombre" placeholder="Ingrese el Nombre" required>
+    						<label class="control-label col-xs-2" for="nombre">Nombre:</label>
+    						<div class="col-xs-10">
+      							<input type="text" class="form-control" name="nombre" placeholder="Ingrese el Nombre" maxlength="60" required>
       			<!-- validación de nombre -->				
       							@if ($errors->has('nombre'))
                                     <span class="help-block">
@@ -35,8 +35,8 @@
 
 <!-- Descuento -->
   						<div class="form-group">
-  						  <label class="control-label col-sm-2" for="descuento">Descuento:</label>
-  						  	<div class="col-sm-10"> 
+  						  <label class="control-label col-xs-2" for="descuento">Descuento:</label>
+  						  	<div class="col-xs-10"> 
   						    	<input type="number" min="0" max="100" class="form-control" name="descuento" placeholder="Porcentaje de descuento" required>
   				<!-- validación de nombre -->		    	
   						    	@if ($errors->has('descuento'))
@@ -48,9 +48,9 @@
   						</div>
 <!-- detalles -->
   						<div class="form-group">
-  						  <label class="control-label col-sm-2" for="detalle">Detalles:</label>
-  						  	<div class="col-sm-10"> 
-  						    	<textarea type="text" class="form-control" name="detalle" placeholder="Indique los requisitos para esta beca" required></textarea>
+  						  <label class="control-label col-xs-2" for="detalle">Detalles:</label>
+  						  	<div class="col-xs-10"> 
+  						    	<textarea type="text" class="form-control" name="detalle" placeholder="Indique los requisitos para esta beca" maxlength="499" required></textarea>
   				<!-- validación de descuento -->
   						    	@if ($errors->has('detalle'))
                                     <span class="help-block">
@@ -61,7 +61,7 @@
   						</div>
 <!-- boton -->
   						<div class="form-group"> 
-    						<div class="col-sm-offset-2 col-sm-10">
+    						<div class="col-xs-offset-2 col-xs-10">
       						<button type="submit" class="btn btn-theme">Guardar</button>
     						</div>
   						</div>

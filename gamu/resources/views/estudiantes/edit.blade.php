@@ -24,7 +24,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="nombre">Nombre:</label>
                     <div class="col-sm-10">
-                     <input type="text" class="form-control" name="nombre" placeholder="Ingrese el Nombre" value="{{ $estud->nombre }}" required>
+                     <input type="text" class="form-control" name="nombre" placeholder="Ingrese el Nombre" value="{{ $estud->nombre }}" maxlength="60" required>
             <!-- validación de nombre -->       
                        @if ($errors->has('nombre'))
                         <span class="help-block">
@@ -38,7 +38,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="apellidos">Apellidos:</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="apellidos" placeholder="Ahora los apellidos" value="{{ $estud->apellidos }}" required>
+                      <input type="text" class="form-control" name="apellidos" placeholder="Ahora los apellidos" value="{{ $estud->apellidos }}" maxlength="60" required>
             <!-- validación de apellidos -->       
                        @if ($errors->has('apellidos'))
                         <span class="help-block">
@@ -52,7 +52,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="cedula">Cédula:</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="cedula" placeholder="El número de cédula" value="{{ $estud->cedula }}" required>
+                      <input type="text" class="form-control" name="cedula" placeholder="El número de cédula" value="{{ $estud->cedula }}" maxlength="10" required>
             <!-- validación de cedula -->       
                        @if ($errors->has('cedula'))
                         <span class="help-block">
@@ -80,7 +80,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="telefono">Teléfono:</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="telefono" placeholder="Ingrese un número telefonico donde se pueda localizar" value="{{ $estud->telefono }}" required>
+                      <input type="number" class="form-control" name="telefono" placeholder="Ingrese un número telefonico donde se pueda localizar" value="{{ $estud->telefono }}" min="0" max="1000000000" required>
             <!-- validación detelefonoa -->       
                        @if ($errors->has('telefono'))
                         <span class="help-block">
@@ -93,7 +93,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="email">Correo Electrónico:</label>
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" name="email" placeholder="Ingrese la dirección de correo electrónico" value="{{ $estud->email }}" required>
+                      <input type="email" class="form-control" name="email" placeholder="Ingrese la dirección de correo electrónico" value="{{ $estud->email }}" maxlength="60" required>
             <!-- validación detelefonoa -->       
                        @if ($errors->has('email'))
                         <span class="help-block">
@@ -169,7 +169,7 @@
                   
                     <label class="control-label col-sm-2" for="nombre_padre1">Nombre Padre/Madre:</label>
                     <div class="col-sm-10">
-                     <input type="text" class="form-control" name="nombre_padre1" placeholder="Ingrese el Nombre" value="{{ $estud->nombre_padre1 }}" required>
+                     <input type="text" class="form-control" name="nombre_padre1" placeholder="Ingrese el Nombre" value="{{ $estud->nombre_padre1 }}"  maxlength="60" required>
             <!-- validación de nombre_padre -->       
                        @if ($errors->has('nombre_padre1'))
                         <span class="help-block">
@@ -182,7 +182,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="tel_padre1">Teléfono:</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="tel_padre1" placeholder="Ingrese un número telefonico donde se pueda localizar" value="{{ $estud->tel_padre1 }}" required>
+                      <input type="number" class="form-control" name="tel_padre1" placeholder="Ingrese un número telefonico donde se pueda localizar" value="{{ $estud->tel_padre1 }}" min="0" max="1000000000" required>
             <!-- validación detelefonoa -->       
                        @if ($errors->has('tel_padre1'))
                         <span class="help-block">
@@ -195,7 +195,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="email_emergencia">Correo Electrónico:</label>
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" name="email_emergencia" placeholder="Ingrese la dirección de correo electrónico" value="{{ $estud->email_emergencia }}" required>
+                      <input type="email" class="form-control" name="email_emergencia" placeholder="Ingrese la dirección de correo electrónico" value="{{ $estud->email_emergencia }}"  maxlength="60" required>
             <!-- validación detelefonoa -->       
                        @if ($errors->has('email_emergencia'))
                         <span class="help-block">
@@ -215,7 +215,7 @@
                   
                     <label class="control-label col-sm-2" for="nombre_padre2">Nombre</label>
                     <div class="col-sm-10">
-                     <input type="text" class="form-control" name="nombre_padre2" placeholder="Ingrese el Nombre" value="{{ $estud->nombre_padre2 }}" >
+                     <input type="text" class="form-control" name="nombre_padre2" placeholder="Ingrese el Nombre" value="{{ $estud->nombre_padre2 }}"  maxlength="60" >
             <!-- validación de nombre_padre -->       
                        
                     </div>
@@ -224,7 +224,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="tel_padre2">Teléfono:</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="tel_padre2" placeholder="Ingrese un número telefonico donde se pueda localizar" value="{{ $estud->tel_padre2 }}" >
+                      <input type="number" class="form-control" name="tel_padre2" placeholder="Ingrese un número telefonico donde se pueda localizar" value="{{ $estud->tel_padre2 }}"  min="0" max="1000000000" maxlength="60" >
             
                     </div>
                   </div>
@@ -269,11 +269,9 @@
         </div>
     </div>
 </div>
-
-<script>
-$(document).ready(function(){
-    $('[data-toggle="popover"]').popover();
-});
-</script> 
+ 
 
  @endsection
+  @section('scripts')
+   <script src="/js/pop.js"></script>
+  @endsection

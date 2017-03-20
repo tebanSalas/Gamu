@@ -22,7 +22,7 @@
   						    <div class="form-group">
     						    <label class="control-label col-sm-2" for="nombre">Nombre:</label>
     						    <div class="col-sm-10">
-      							 <input type="text" class="form-control" name="nombre" placeholder="Ingrese el Nombre" required>
+      							 <input type="text" class="form-control" name="nombre" placeholder="Ingrese el Nombre" maxlength="60" required>
       			<!-- validación de nombre -->				
       							   @if ($errors->has('nombre'))
                         <span class="help-block">
@@ -36,7 +36,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="serie">Serie:</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="serie" placeholder="Ingrese el número de serie del instrumento" required>
+                      <input type="text" class="form-control" name="serie" placeholder="Ingrese el número de serie del instrumento" maxlength="60" required>
             <!-- validación de serie -->       
                        @if ($errors->has('serie'))
                         <span class="help-block">
@@ -50,7 +50,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="marca">Marca:</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="marca" placeholder="Ingrese la marca del instrumento" required>
+                      <input type="text" class="form-control" name="marca" placeholder="Ingrese la marca del instrumento" maxlength="60" required>
             <!-- validación de marca -->       
                        @if ($errors->has('marca'))
                         <span class="help-block">
@@ -64,7 +64,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="num_activo">Número de activo:</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="num_activo" placeholder="Ingrese el número de activo" required>
+                      <input type="text" class="form-control" name="num_activo" placeholder="Ingrese el número de activo" maxlength="60" required>
             <!-- validación de num_activo -->       
                        @if ($errors->has('num_activo'))
                         <span class="help-block">

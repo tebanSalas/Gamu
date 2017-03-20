@@ -12,7 +12,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-lg-8 col-lg-offset-2">
             <div class="panel panel-info">
                 <div class="panel-heading">Seleccione el estudiante, seguidamente la beca que le asiganará al mismo</div>
                 <div class="panel-body">
@@ -21,29 +21,29 @@
                     {{ csrf_field() }}
 <!-- cursos -->
                     <div class="form-group">
-                      <div class="col-md-2" >
+                      <div class="col-xs-2" >
                         <label  class="control-label col-sm-2" >Estudiante</label>
                       </div>
-                      <div class="col-md-8" >
-                        <select id="estudiantes" class="btn btn-default col-md-12" name="estudiantes" >
+                      <div class="col-xs-8" >
+                        <select id="estudiantes" class="btn btn-default col-xs-12" name="estudiantes" >
                         @foreach ($estud as $est)
                           <option value="{{ $est->id }}" >{{ $est->nombre }} {{ $est->apellidos }}. Ced. {{ $est->cedula }}</option> 
                         @endforeach
                         </select>
                       </div>
-                      <div class="col-md-2" >
-                        <button type="button" class="btn btn-warning col-md-10" data-toggle="modal" data-target="#estud">Buscar</button>
+                      <div class="col-xs-2" >
+                        <button type="button" class="btn btn-warning col-xs-10" data-toggle="modal" data-target="#estud">Buscar</button>
                       </div>
                       </div>
 
 <!-- Beca -->
                     <div class="form-group">
-                      <div class="col-md-2" >
+                      <div class="col-xs-2" >
                         <label class="control-label col-sm-2" for="nombre">Beca</label>
                       </div>
 
-                      <div class="col-md-8" >
-                       <select id="becas" class="btn btn-default col-md-12" name="becas" 
+                      <div class="col-xs-8">
+                       <select id="becas" class="btn btn-default col-xs-12" name="becas" >
                         @foreach ($becas as $bec)
                           <option value="{{ $bec->id }}"> {{ $bec->nombre }}</option> 
                         @endforeach
@@ -54,7 +54,7 @@
 
 <!-- Boton -->
                       <div class="form-group"> 
-                        <div class="col-md-offset-10 col-md-2">
+                        <div class="col-xs-offset-10 col-xs-2">
                            <button type="submit" class="btn btn-theme">Asignar</button>
                         </div>
                       </div>

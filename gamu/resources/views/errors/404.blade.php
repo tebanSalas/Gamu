@@ -1,47 +1,56 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>custom</title>
-
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                color: #B0BEC5;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato', sans-serif;
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 72px;
-                margin-bottom: 40px;
-            }
-        </style>
-    </head>
-    <body>
+@extends('layouts.app') 
+<nav class="navbar navbar-default navbar-static-top">
         <div class="container">
-            <div class="content">
-                <div class="title">custom.</div>
+            <div class="navbar-header">
+
+                <!-- Branding Image -->
+                <a class="navbar-brand" >
+                    GAMU - Sistema de Escuelas de Música de Paraíso
+                </a>
             </div>
-        </div>
-    </body>
-</html>
+        </div>    
+</nav>
+
+@section('content')
+    <style>
+    .a {
+        height: 100%
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        color: #384452;
+        display: table;
+        font-weight: 100;
+        font-family: 'Lato', sans-serif;
+        text-align: center;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        display: inline-block;
+        font-size: 72px;
+        margin-bottom: 40px;
+    }
+    footer{
+            text-align: center;
+            width: 100%;
+            bottom: 25;
+            position:fixed;
+            height: 45px
+    }
+
+ 
+</style>
+
+    <label  id="a" class="a"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Opa! Algo está saliendo mal.</label>  
+   <img src="/img/404.jpg" alt="Logo Escuela Comunal de Musica de Orosi" class="img-responsive">
+    
+    <footer>
+        <a href="javascript:history.back(-1);"  class="btn btn-theme" title="Ir la página anterior">Volver</a>
+    </footer>   
+            
+       
+
+        
+  
+@endsection
+

@@ -15,7 +15,8 @@ class Prestamos extends Controller
      */
     public function index()
     {
-        $estud = DB::select('select * from estudiantes WHERE estudiantes.delete = 0');  
+        //$estud = DB::select('select * from estudiantes WHERE estudiantes.delete = 0');
+        $estud = Estudiante::where('delete','=',0)->paginate(1);
         return view('pagos.registrarPago')->with(['estud'=>$estud]);
     }
 

@@ -17,7 +17,7 @@
 			 		<thead>
 			 			<th>Nombre</th>
 			 			<th>Email</th>
-			 			<th>Editar</th>
+			 			<th>Eliminar</th>
 			 		</thead>
 			 		<tbody>
 
@@ -26,7 +26,7 @@
 				 				<td>{{ $use->name }}</td>
 				 				<td>{{ $use->email }}</td>
 				 				<td>
-					 				<a href="usuarios/{{ $use->id }}/edit" class="btn btn-info">Editar </a>  
+					 				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Eliminar</button>  
 					 			</td>
 				 			</tr>
 				 		@endforeach
@@ -36,7 +36,27 @@
         </div>
     </div>
 </div>
-
+<!-- Modal -->
+                      <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+                        
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                            
+                            <div class="modal-body">
+                              <h4>Está seguro que desea eliminar la información de: {{ $use->name}} ?</h4>
+                            </div>
+                            <div class="modal-footer">
+                              <form method="POST" action="{{ route('usuarios.destroy',$use->id) }}">
+                                <input type="hidden" name="_method" value="DELETE">
+                                  {{ csrf_field() }}
+                                <input type="submit" class="btn btn-danger" value="Eliminar">
+                                <button type="button" class="btn btn-success" data-dismiss="modal">Volver</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div><!--modal-->
 
 
 

@@ -21,9 +21,9 @@
                     {{ csrf_field() }}
 <!-- Nombre -->
                   <div class="form-group">
-                    <label class="control-label col-sm-2" for="nombre">Nombre:</label>
-                    <div class="col-sm-10">
-                     <input type="text" class="form-control" name="nombre" placeholder="Ingrese el Nombre" value="{{ $curso->nombre}}" required>
+                    <label class="control-label col-xs-2" for="nombre">Nombre:</label>
+                    <div class="col-xs-10">
+                     <input type="text" class="form-control" name="nombre" placeholder="Ingrese el Nombre" value="{{ $curso->nombre}}" maxlength="60" required>
             <!-- validación de nombre -->       
                        @if ($errors->has('nombre'))
                         <span class="help-block">
@@ -35,9 +35,9 @@
 
 <!-- Sigla -->         
                   <div class="form-group">
-                    <label class="control-label col-sm-2" for="sigla">Sigla:</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" name="sigla" placeholder="Ingrese la sigla del curso" value="{{ $curso->sigla}}" required>
+                    <label class="control-label col-xs-2" for="sigla">Sigla:</label>
+                    <div class="col-xs-10">
+                      <input type="text" class="form-control" name="sigla" placeholder="Ingrese la sigla del curso" value="{{ $curso->sigla}}" maxlength="60" required>
             <!-- validación de sigla -->       
                        @if ($errors->has('sigla'))
                         <span class="help-block">
@@ -47,26 +47,14 @@
                     </div>
                   </div>
 
-<!-- Cupo -->        
-                  <div class="form-group">
-                    <label class="control-label col-sm-2" for="cupo">Cupo:</label>
-                      <div class="col-sm-10"> 
-                        <input type="number" min="1" max="100" class="form-control" name="cupo" placeholder="Indique la     cantidad de cupos para este curso" value="{{ $curso->cupo}}" required>
-          <!-- validación de nombre -->         
-                        @if ($errors->has('cupo'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('cupo') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                  </div>
+
 
 
 
 <!-- tipo -->         
                   <div class="form-group">
-                    <label class="control-label col-sm-2" for="tipo">Tipo de curso:</label>
-                      <div class="dropdown col-sm-10">
+                    <label class="control-label col-xs-2" for="tipo">Tipo de curso:</label>
+                      <div class="dropdown col-xs-10">
                       <select class="btn btn-default " name="tipo">
                       @if($curso->tipo === 'Teoricos')
                         <option value="Teoricos" selected>Teóricos</option>
@@ -90,7 +78,7 @@
 
 <!-- boton -->
   						    <div class="form-group"> 
-    						    <div class="col-sm-offset-2 col-sm-10">
+    						    <div class="col-xs-offset-2 col-xs-10">
       						    <button type="submit" class="btn btn-theme">Actualizar</button>
                       <button align="rigth" type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Eliminar</button>
     						    </div>
@@ -113,7 +101,7 @@
                                 <input type="hidden" name="_method" value="DELETE">
                                   {{ csrf_field() }}
                                 <input type="submit" class="btn btn-danger" value="Eliminar">
-                                <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
                               </form>
                               
                             </div>

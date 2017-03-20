@@ -22,7 +22,8 @@ class Instrumentos extends Controller
     public function index()
     {
 
-        $instrumentos = DB::select('select * from instrumentos WHERE instrumentos.delete = 0');
+        //$instrumentos = DB::select('select * from instrumentos WHERE instrumentos.delete = 0');
+        $instrumentos = Instrumento::where('delete','=',0)->paginate(10);
         return view('Instrumentos.index')->with(['instrumentos'=>$instrumentos]);
 
     }
@@ -141,7 +142,7 @@ class Instrumentos extends Controller
 
     public function asignar()
     {
-      $estud = DB::select('select * from estudiantes WHERE estudiantes.delete = 0');  
+      $estud = DB::select('select * from estudiantes WHERE estudiantes.delete = 0 ORDER BY estudiantes.nombre ASC');  
       $inst = DB::select('select * from instrumentos WHERE instrumentos.delete = 0 && instrumentos.disponibilidad like "Disponible"');
         return view('instrumentos.asignarInst')->with(['inst'=>$inst , 'estud'=>$estud]);  
       
@@ -195,7 +196,7 @@ class Instrumentos extends Controller
 
     public function devolucion()
     {
-        $estud = DB::select('select * from estudiantes WHERE estudiantes.delete = 0');
+        $estud = DB::select('select * from estudiantes WHERE estudiantes.delete = 0 ORDER BY estudiantes.nombre ASC');
         return view('instrumentos.devolucion')->with(['estud'=>$estud]);
     }
     public function getPrestamo($id)

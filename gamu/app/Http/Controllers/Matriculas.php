@@ -48,7 +48,7 @@ class Matriculas extends Controller
      */
     public function create()
     {
-        $estudiantes = DB::select('select * from estudiantes WHERE estudiantes.delete = 0');
+        $estudiantes = DB::select('select * from estudiantes WHERE estudiantes.delete = 0 ORDER BY estudiantes.nombre ASC');
             return response()->json(
                 $estudiantes
             );

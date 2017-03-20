@@ -23,7 +23,7 @@
   						    <div class="form-group">
     						    <label class="control-label col-sm-2" for="nombre">Nombre:</label>
     						    <div class="col-sm-10">
-      							 <input type="text" class="form-control" name="nombre" placeholder="Ingrese el Nombre" value="{{ $instrumento->nombre}}" required>
+      							 <input type="text" class="form-control" name="nombre" placeholder="Ingrese el Nombre" value="{{ $instrumento->nombre}}" maxlength="60" required>
       			<!-- validación de nombre -->				
       							   @if ($errors->has('nombre'))
                         <span class="help-block">
@@ -37,7 +37,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="serie">Serie:</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="serie" placeholder="Ingrese el número de serie del instrumento" value="{{ $instrumento->serie}}" required>
+                      <input type="text" class="form-control" name="serie" placeholder="Ingrese el número de serie del instrumento" value="{{ $instrumento->serie}}" maxlength="60" required>
             <!-- validación de serie -->       
                        @if ($errors->has('serie'))
                         <span class="help-block">
@@ -51,7 +51,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="marca">Marca:</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="marca" placeholder="Ingrese la marca del instrumento" value="{{ $instrumento->marca}}" required>
+                      <input type="text" class="form-control" name="marca" placeholder="Ingrese la marca del instrumento" value="{{ $instrumento->marca}}" maxlength="60" required>
             <!-- validación de marca -->       
                        @if ($errors->has('marca'))
                         <span class="help-block">

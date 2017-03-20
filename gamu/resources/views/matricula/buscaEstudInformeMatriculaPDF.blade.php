@@ -14,7 +14,7 @@
   <div class="row">
 		<div class="form-group">
   			<div class="col-md-offset-2 col-md-7" >
-  				<input id="nombre" name="nombre" type="text" class="form-control col-md-12"  placeholder="Ingrese un nombre del estudiante a buscar" >
+  				<input id="nombre" name="nombre" type="text" class="form-control col-md-12"  placeholder="Ingrese un nombre del estudiante a buscar" maxlength="60">
   			</div>
   			<div class="col-md-2" >
   				<input id="btnBuscar" type="submit" class="btn btn-success " value="Buscar">

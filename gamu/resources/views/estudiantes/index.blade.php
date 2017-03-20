@@ -68,7 +68,7 @@
 			 		</tbody>
 		 		@endif
  			</table>
- 			
+ 			{{ $estud->links() }}
         </div>
     </div>
 </div>

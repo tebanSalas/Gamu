@@ -1,6 +1,6 @@
 @extends('layouts.app') 
 
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-default navbar-static-top"">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -70,7 +70,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="../../../facturas"><i class="fa fa-usd" aria-hidden="true"></i> Registrar Pagos</a></li>
                         <li><a href="../../../buscaEstudianteHistorico"><i class="fa fa-money" aria-hidden="true"></i> Pagos Estudiante</a></li>
-                        <li><a href=""><i class="fa fa-bar-chart" aria-hidden="true"></i> Morosos</a></li>
+                        <li><a href="../../../error"><i class="fa fa-bar-chart" aria-hidden="true"></i> Morosos</a></li>
                     </ul>
                 </li>                    
                     

@@ -169,6 +169,7 @@ class Instrumentos extends Controller
 
         DB::beginTransaction();
 
+    
         $instru->disponibilidad = "Ocupado";
         if($instru->update()){
             $prestamo = new Prestamo();
@@ -189,7 +190,7 @@ class Instrumentos extends Controller
             return back()->with('msj2', 'Opa!, Estamos presentando dificultades para poner el instrumento como ocupado.');
         }
 
-        
+
         
     }
     //*****************************DEVOLUCION******************************
@@ -223,9 +224,10 @@ class Instrumentos extends Controller
     }
     public function desvincular(Request $request)
     {   
-        
+    
         $id = $request->idPrestamo;
         $idInst = $request->instrumentos;
+    if($idInst != 0){ 
         $instrumento =  Instrumento::find($idInst);
         $instrumento->disponibilidad = "Disponible";
         DB::beginTransaction();
@@ -242,6 +244,9 @@ class Instrumentos extends Controller
              DB::rollback();
              return back()->with('msj2', 'Opa!, algo pasó. No se ha podido actualizar la información del instrumento, por lo que la devolución no se puede tramitar en este momento');
         }
+    }else{
+        return back()->with('msj2', 'Opa!, No se puede realizar esta acción debido a que no existen instumentos relacionados al este estudiante');
+    }
     }
 
     //***************************** REPORTES *****************************

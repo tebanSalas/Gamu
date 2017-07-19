@@ -24,7 +24,7 @@
                       <div class="col-xs-8" >
                         <select id="estudiantes" class="btn btn-default col-xs-12" name="estudiantes" >
                         @foreach ($estud as $est)
-                          <option value="{{ $est->id }}">{{ $est->nombre }} {{ $est->apellidos }}</option>
+                          <option value="{{ $est->id }}">{{ $est->nombre }} {{ $est->apellidos }}. Ced. {{ $est->cedula }}</option>
                         @endforeach
                         </select>
                       </div>

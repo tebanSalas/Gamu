@@ -101,8 +101,9 @@ class Matriculas extends Controller
                 
                 if($matri->save()){
                     $cursoprofe = CurProf::find($curProf);
-                    $cursoprofe->cupo = $cursoprofe->cupo - 1;
-                    if($cursoprofe->cupo>0){
+                    
+                    if($cursoprofe->cupo >= 1){
+                        $cursoprofe->cupo = $cursoprofe->cupo - 1;
                         if($cursoprofe->update()){
                             DB::commit();
                             return response()->json([

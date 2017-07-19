@@ -62,7 +62,7 @@
 
 		 		@endif
  			</table>
- 			{{ $cursos->links() }}
+ 			
         </div>
     </div>
 </div>

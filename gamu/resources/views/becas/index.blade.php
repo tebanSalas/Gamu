@@ -64,7 +64,7 @@
 			 		</tbody>
 		 		@endif
  			</table>
- 			{{ $becas->links() }}
+ 			
         </div>
     </div>
 </div>

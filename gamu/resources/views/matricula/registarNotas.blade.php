@@ -36,7 +36,7 @@
 								<div class="col-xs-2">
 									<label >Nota:</label>
 							<form role="form" method="POST" action="{{ url('/asignarNota') }}">
-									<input type="number" class="form-control" name="nota" value="0" >
+									<input type="number" class="form-control" name="nota" value="0" min="0" max="100">
 								</div>
 								<div class="col-xs-2">
 									

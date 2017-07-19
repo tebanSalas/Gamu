@@ -6,7 +6,7 @@ $("#btnBuscarEstud").click(function(){
 
 	$.get(route, function(res){
 		$(res).each(function(key,value){
-			drop.append("<option value="+value.id+">"+value.nombre+" "+value.apellidos+"</option>");
+			drop.append("<option value="+value.id+">"+value.nombre+" "+value.apellidos+". Ced. "+value.cedula+"</option>");
 		});
 	});
 });
